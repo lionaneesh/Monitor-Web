@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Udacity - Free Classes. Awesome Instructors. Inspiring Community.
+  </title>
+  <link rel="stylesheet" type="text/css" href="/media/css/udacity.css?16" />
+  <script src="//www.google.com/jsapi?key=ABQIAAAAOx-pTXyuaUsotjKevTem5RRY-J96ZG6vUeHysYWcYheHIRtZ7hQ7CQ5yRTKcwjX2z4sBOrajFOZMkA">
+  </script>
+  <script type="text/javascript">
+   if (!window.console) {
+       window.console = {
+          log : function(){},
+          debug : function(){},
+          info : function(){},
+          warn : function(){}
+       }
+    }
+    google.load("jquery", "1.7.1", {uncompressed:true});
+    google.load("jqueryui", "1.8.16");
+  </script>
+  <!--script src="http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js"></script -->
+  <script src="/media/js/jquery.form.js">
+  </script>
+  <script src="/media/js/jquery.history.js">
+  </script>
+  <script src="/media/js/json2.js">
+  </script>
+  <script src="/media/js/udacity.js?16">
+  </script>
+  <script src="/media/js/pages.js?16">
+  </script>
+  <script type="text/javascript">
+   csrf_token = "AsskzKrmzcDTuwcHJ5MWiVBVvX8LJMbxnsWhqGtxXNMyzMbgYwkt3hws2GTV"
+  </script>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28524234-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+$(document).ready(function() {
+    // use js to position botbar at either end of document or bottom of window, whichever is lower
+    var windowHeight = $(window).height();   // returns height of browser viewport
+    var contentHeight = $("body").height(); // returns height of HTML document
+    var footerHeight = $("div#bottom_bin").height();
+    var footerTop = windowHeight - footerHeight - 50;
+    if (windowHeight > contentHeight) {
+        //$("div#bottom_bin").css("top",footerTop);
+    }
+    //alert('window: '+windowHeight+' content: '+contentHeight+' footer: '+footerHeight+' top: '+footerTop);
+});
+  </script>
+  <link rel="stylesheet" type="text/css" href="/media/css/jquery-tabs.css" />
+ </head>
+ <body>
+  <div id="not-footer">
+   <div id="top_bin">
+    <div id="top_content" class="width960">
+     <!-- logo -->
+     <div class="udacity float-left">
+      <a href="/">
+       <img src="/media/img/udacity-beta-sm-293x28.png" width="293" height="28" alt="Udacity" />
+      </a>
+     </div>
+     <!-- buttons -->
+     <div class="user-block">
+      <!-- SIGN IN BUTTON & OVERLAY -->
+      <div id="user-button" rel="user-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN IN
+       </span>
+      </div>
+      <div id="user-overlay" class="overlay">
+       <form id="signin-form" method="post">
+        <p>
+         <label for="email-field" class="login-label">
+          Email
+         </label>
+        </p>
+        <input class="login-field" type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field" class="login-label">
+          Password
+         </label>
+        </p>
+        <input class="login-field" type="password" name="password" required="required" />
+        <p>
+         <a href="" class="modal-input" id="forgot-password" rel="#forgot-password-overlay">
+          Forgot your password?
+         </a>
+        </p>
+        <br />
+        <!-- TODO make a display block in css? -->
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- SIGN UP BUTTON & OVERLAY -->
+      <div id="signup-button" rel="signup-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN UP
+       </span>
+      </div>
+      <div id="signup-overlay" class="overlay">
+       <form id="signup-form" action="/" method="post">
+        <p>
+         <label for="name-field">
+          Name
+         </label>
+        </p>
+        <input type="text" name="name" required="required" />
+        <p>
+         <label for="email-field">
+          Email
+         </label>
+        </p>
+        <input type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field">
+          Choose a password
+         </label>
+        </p>
+        <input type="password" name="password" required="required" />
+        <p>
+         <label for="tos-field">
+          I accept the
+          <a href="/legal/" target="_blank">
+           TOS
+          </a>
+         </label>
+         <input type="checkbox" name="tos" required="required" />
+        </p>
+        <br />
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- CLASS LIST BUTTON & OVERLAY -->
+      <div id="courses-button" rel="courses-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        CLASS LIST
+       </span>
+      </div>
+      <div id="courses-overlay" class="overlay">
+       <!-- TODO eventually load course list from database -->
+       <p>
+        <a href="/overview/Course/cs101">
+         CS 101: Building a Search Engine
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/overview/Course/cs373">
+         CS 373: Programming a Robotic Car
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/" class="arrow">
+         SEE ALL UPCOMING CLASSES
+        </a>
+       </p>
+      </div>
+     </div>
+     <!-- end user-block -->
+     <div class="header-title">
+      <h2>
+      </h2>
+     </div>
+     <div class="header-text clear">
+      <h2>
+       Programming A Robotic Car
+      </h2>
+      <p>
+       Over the course of seven weeks you will learn how to program all the major systems of a robotic car from the leader of Google and Stanford's autonomous driving teams.
+      </p>
+     </div>
+     <!-- header nav function starts here -->
+     <div id="header-nav clear">
+      <ul class="topnav">
+       <li class="topnav selected">
+        <a href="">
+         Overview
+        </a>
+       </li>
+       <li class="inactive">
+        <span>
+         Course Content
+        </span>
+       </li>
+       <li class="inactive">
+        <span>
+         Discussion
+        </span>
+       </li>
+       <li class="inactive">
+        <span>
+         Announcements
+        </span>
+       </li>
+       <li class="inactive">
+        <span>
+         Progress
+        </span>
+       </li>
+      </ul>
+      <div class="clear">
+      </div>
+     </div>
+     <!-- end header-nav -->
+     <!-- header nav function ends here -->
+    </div>
+    <!-- end top_content -->
+    <div class="clear">
+    </div>
+    <div style="padding: 10px; text-align: center; color: black; background-color: #d26a33; font-size: 1.2em;" id="javascript_warning">
+     <img src="/media/img/alert.gif" style="vertical-align: middle;" />
+     <span>
+      This website requires JavaScript to be
+ 	enabled. Please make sure JavaScript is enabled in your web browser
+ 	preferences and any JavaScript blockers are disabled for this site.
+     </span>
+    </div>
+   </div>
+   <!-- end top_bin -->
+   <script type="text/javascript">
+    $("#javascript_warning").css("display", "none");
+   </script>
+   <div class="modal small" id="forgot-password-overlay">
+    <div class="close">
+    </div>
+    <h1>
+     FORGOT YOUR PASSWORD?
+    </h1>
+    <p>
+     Please enter the e-mail address you used to enroll in a Udacity class and we will send you a link to reset your password.
+    </p>
+    <form id="forgot-password-form">
+     <div class="error">
+     </div>
+     <p>
+      <label for="email-field">
+       Email
+      </label>
+     </p>
+     <input id="name-field" type="email" name="email" required="required" />
+     <button class="button" type="submit">
+      SUBMIT ADDRESS
+     </button>
+    </form>
+   </div>
+   <div id="content-background">
+    <div id="content" class="width960">
+     <div id="course-container">
+      <div class="splash-video">
+       <div id="teaser-video">
+       </div>
+      </div>
+      <script type="text/javascript">
+       google.load("swfobject", "2.2");
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/player_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		
+		function onYouTubePlayerAPIReady() {
+			teaserPlayer = new YT.Player('teaser-video', {
+				height: '400',
+				width: '710',
+				videoId: 'bdCnb0EFAzk',
+				playerVars: {'wmode': 'opaque', 'autohide': '1', 'fs': 1, 'rel': 0},
+				events: {
+				}
+			});
+		}
+      </script>
+      <div class="enroll">
+       <h1>
+        ENROLL
+       </h1>
+       <hr />
+       <p>
+        This course has already started.  You can still join and catch up, or wait a few weeks until the next time it is offered.
+			  Ready to sign up?
+       </p>
+       <form id="enroll-form" action="" method="post">
+        <p>
+         <label for="name-field">
+          Name:
+         </label>
+        </p>
+        <input type="text" name="name" required="required" />
+        <p>
+         <label for="email-field">
+          Email:
+         </label>
+        </p>
+        <input type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field">
+          Choose a password:
+         </label>
+        </p>
+        <input type="password" name="password" required="required" />
+        <p>
+         <label for="tos-field">
+          I accept the
+          <a href="/legal/" target="_blank">
+           TOS
+          </a>
+          :
+         </label>
+         <input type="checkbox" name="tos" required="required" />
+        </p>
+        <input type="hidden" name="course_rev" value="agpzfnVkYWNpdHl1cicLEgZDb3Vyc2UiBWNzMzczDAsSCUNvdXJzZVJldiIHZmViMjAxMgw" />
+        <button class="button" type="submit">
+         ENROLL
+        </button>
+       </form>
+      </div>
+     </div>
+     <!-- end course-container -->
+     <!-- tabbed content -->
+     <div id="tabs">
+      <ul>
+       <li>
+        <a href="#tab-instructors">
+         Instructors
+        </a>
+       </li>
+       <li>
+        <a href="#tab-syllabus">
+         Syllabus
+        </a>
+       </li>
+       <li>
+        <a href="#tab-prerequisites">
+         Prerequisites
+        </a>
+       </li>
+       <li>
+        <a href="#tab-classfaq">
+         Class FAQ
+        </a>
+       </li>
+      </ul>
+      <div id="tab-instructors">
+       <div style="float: left; width: 45%; margin-right: 30px;">
+        <img src="/image/headshot/Instructor/836018" width="300px" height="200px" />
+        <p>
+         <b class="sans">
+          SEBASTIAN THRUN
+         </b>
+        </p>
+        <hr />
+        <p>
+         Sebastian Thrun is a Research Professor of Computer Science at
+			Stanford University, a Google Fellow, a member of the National
+			Academy of Engineering and the German Academy of Sciences. Thrun is
+			best known for his research in robotics and machine learning,
+			specifically his
+         <a href="http://www.huffingtonpost.com/2011/12/06/self-driving-car_n_1130568.html">
+          work
+				with self-driving cars
+         </a>
+         .
+        </p>
+       </div>
+       <div class="clear">
+       </div>
+      </div>
+      <!-- end tab-instructors -->
+      <div id="tab-syllabus">
+       <h1>
+        Programming A Robotic Car
+       </h1>
+       <hr />
+       <p>
+        <b>
+         Description
+        </b>
+        : 
+		This class, taught by one of the foremost experts in AI, will teach you basic methods in Artificial Intelligence, including: probabilistic inference, computer vision, machine learning, and planning, all with a focus on robotics. Extensive programming examples and assignments will apply these methods in the context of building self-driving cars. You will get a chance to visit, via video, the leading research labs in the field, and meet the scientists and engineers who are building self-driving cars at Stanford and Google.
+       </p>
+       <p>
+        <b>
+         Prerequisites
+        </b>
+        : 
+		The instructor will assume solid knowledge of programming, all programming will be in Python. Knowledge of probability and linear algebra will be helpful.
+       </p>
+       <p class="syllabus-week">
+        WEEK 1:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Basics of probability
+        </b>
+        <br />
+        Car localization with particle filters
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 2:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Gaussians and continuous probability
+        </b>
+        <br />
+        Tracking other cars with Kalman filters
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 3:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Image Processing and Machine Learning
+        </b>
+        <br />
+        Finding objects in sensor data
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 4:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Planning and search
+        </b>
+        <br />
+        Determining where to drive with A* search
+        <br />
+        Finding optimal routes with dynamic programming
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 5:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Controls
+        </b>
+        <br />
+        Controlling steering and speeds with PID
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 6:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Putting it all together
+        </b>
+        <br />
+        Programming a self-driving car
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 7:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Final Exam
+        </b>
+        <br />
+        Exam testing your knowledge
+       </p>
+      </div>
+      <!-- end tab-syllabus -->
+      <div id="tab-prerequisites">
+       <h1>
+        PREREQUISITES
+       </h1>
+       <hr />
+       <p>
+        You should either already know Python, or have enough experience with another language to be confident you can pick up what you need on your own.Â Fortunately, Python was built to be easy to learn, read, and use. If you already know another programming language, you'll be coding in Python in less than an hour. Additionally, knowledge of probability and linear algebra will be helpful.
+       </p>
+       <p>
+        <b>
+         Python Review
+        </b>
+       </p>
+       <p>
+        <a target="_blank" href="http://wiki.python.org/moin/BeginnersGuide/Programmers">
+         Python for Programmers
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/introduction-to-programs-data-types-and-variables?topic=new-and-noteworthy">
+         Introduction to Programs Data Types and Variables
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/python-lists?topic=computer-science">
+         Python Lists
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/for-loops-in-python?topic=computer-science">
+         For Loops in Python
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/while-loops-in-python?topic=computer-science">
+         While Loops in Python
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/writing-a-simple-factorial-program---python-2?topic=computer-science">
+         Writing a Simple Factorial Program
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/fun-with-strings?topic=computer-science">
+         Fun with Strings
+        </a>
+       </p>
+       <p>
+        <b>
+         Probability
+        </b>
+       </p>
+       <p>
+        <a target="_blank" href="http://www.khanacademy.org/video/basic-probability">
+         Basic Probability
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/probability--part-6">
+         Probability (Part 6) [Conditional Probability]
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/probability--part-7">
+         Probability (Part 7) [Bayes' Rule]
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/probability--part-8">
+         Probability (Part 8) [More Bayes' Rule]
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/introduction-to-random-variables">
+         Introduction to Random Variables
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/probability-density-functions">
+         Probability Density Functions
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/expected-value--e-x">
+         Expected Value: E(X)
+        </a>
+       </p>
+       <p>
+        <b>
+         Linear Algebra
+        </b>
+       </p>
+       <p>
+        <a target="_blank" href="http://www.khanacademy.org/video/introduction-to-matrices">
+         Introduction to Matrices
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/matrix-multiplication--part-1">
+         Matrix Multiplication (Part 1)
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/matrix-multiplication--part-2">
+         Matrix Multiplication (Part 2)
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/inverse-matrix--part-1">
+         Inverse Matrix (Part 1)
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/inverting-matrices--part-2">
+         Inverting Matrices (Part 2)
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/inverting-matrices--part-3">
+         Inverting Matrices (Part 3)
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/matrices-to-solve-a-system-of-equations">
+         Matrices to Solve a System of Equations
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/singular-matrices">
+         Singular Matrices
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-algebra--introduction-to-vectors">
+         Introduction to Vectors
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/vector-dot-product-and-vector-length">
+         Vector Dot Product and Vector Length
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/defining-the-angle-between-vectors">
+         Defining the Angle Between Vectors
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-algebra--cross-product-introduction">
+         Cross Product Introduction
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/matrix-vector-products">
+         Matrix Vector Products
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-transformations-as-matrix-vector-products">
+         Linear Transformations as Matrix Vector Products
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-transformation-examples--scaling-and-reflections">
+         Linear Transformation Examples: Scaling and Reflections
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-transformation-examples--rotations-in-r2">
+         Linear Transformation Examples: Rotations in R2
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/introduction-to-projections">
+         Introduction to Projections
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-algebra--exploring-the-solution-set-of-ax-b">
+         Exploring the Solution Set of Ax = b
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-algebra--transpose-of-a-matrix">
+         Transpose of a Matrix
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-algebra--3x3-determinant">
+         3x3 Determinant
+        </a>
+        <br />
+        <a target="_blank" href="http://www.khanacademy.org/video/linear-algebra--introduction-to-eigenvalues-and-eigenvectors">
+         Introduction to Eigenvalues and Eigenvectors
+        </a>
+       </p>
+      </div>
+      <!-- end tab-prerequisites -->
+      <div id="tab-classfaq">
+       <h1>
+        QUESTIONS
+       </h1>
+       <hr />
+       <p>
+        <a href="#q1">
+         Can I really learn how to build a self-driving car in 7 weeks?
+        </a>
+       </p>
+       <p>
+        <a href="#q2">
+         Why should I learn how to build a robot car?
+        </a>
+       </p>
+       <p>
+        <a href="#q3">
+         What programming language does the course use?
+        </a>
+       </p>
+       <p>
+        <a href="#q4">
+         What type of math will I be learning in this course?
+        </a>
+       </p>
+       <p>
+        <a href="#q5">
+         Is there a course textbook?
+        </a>
+       </p>
+       <p>
+        <a href="#q6">
+         Are there homework assignments?
+        </a>
+       </p>
+       <p>
+        <a href="#q7">
+         Is there a final exam?
+        </a>
+       </p>
+       <p>
+        <a href="#q8">
+         How will my final grade be determined?
+        </a>
+       </p>
+       <p>
+        <a href="#q9">
+         Do I need to download Python on my computer?
+        </a>
+       </p>
+       <p>
+        <a href="#q10">
+         How do I get help?
+        </a>
+       </p>
+       <p>
+        <a href="#q11">
+         I think one of the quizzes or homework assignments is judging my answer incorrectly, who do I contact?
+        </a>
+       </p>
+       <p>
+        <a href="#q12">
+         What are office hours?
+        </a>
+       </p>
+       <p>
+        <a href="#q13">
+         Something on the site isn't working, who do I contact?
+        </a>
+       </p>
+       <p>
+        <a href="#q14">
+         What are the rules on collaboration?
+        </a>
+       </p>
+       <hr />
+       <div>
+        <a name="q1">
+        </a>
+        <p>
+         <b class="sans">
+          Can I really learn how to build a self-driving car in 7 weeks?
+         </b>
+         <br />
+         Yes! In seven weeks, you will learn the basics of all the primary systems involved in programming a robotic car.
+        </p>
+       </div>
+       <div>
+        <a name="q2">
+        </a>
+        <p>
+         <b class="sans">
+          Why should I learn how to build a robot car?
+         </b>
+         <br />
+         First of all, this is a fascinating subject. The technologies involved are cutting edge, but the theories behind them are simpler than you might think. In addition to learning the math and science behind these technologies, you will also improve your coding probabilities as you solve the same problems that scientists at places like Google, Stanford, and MIT have been working on for years. Having these skills will not only be personally fulfilling, but could have benefits to your professional life as well. Taking this course is the first step that you can take towards creating a world where every car on the road drives itself. If you love learning or just hate traffic, this course is for you.
+        </p>
+       </div>
+       <div>
+        <a name="q3">
+        </a>
+        <p>
+         <b class="sans">
+          What programming language does the course use?
+         </b>
+         <br />
+         We will be using Python (Version 2.6). The concepts we cover in the class are not specific to Python, but apply to computer science in general no matter what programming language you are using.
+        </p>
+       </div>
+       <div>
+        <a name="q4">
+        </a>
+        <p>
+         <b class="sans">
+          What type of math will I be learning in this course?
+         </b>
+         <br />
+         This course will teach basic
+         <a href="http://www.khanacademy.org/video/basic-probability?topic=probability">
+          probability
+         </a>
+         and
+         <a href="http://www.khanacademy.org/video/introduction-to-matrices?topic=algebra-matrices">
+          linear algebra
+         </a>
+         . Feel free to browse these links and the lessons that follow them on Khan Academy if you need some review.
+        </p>
+       </div>
+       <div>
+        <a name="q5">
+        </a>
+        <p>
+         <b class="sans">
+          Is there a course textbook?
+         </b>
+         <br />
+         There is no required textbook for the course, and the course content does not follow any textbook. There are many books available on probability, linear algebra, and Python programming that may be helpful to students.
+        </p>
+       </div>
+       <div>
+        <a name="q6">
+        </a>
+        <p>
+         <b class="sans">
+          Are there homework assignments?
+         </b>
+         <br />
+         Yes, there will be six graded homework assignments, one at the end of each unit. The homework assignments are due
+         <a href="http://www.wolframalpha.com/input/?i=23%3A59+UTC">
+          23:59 UTC
+         </a>
+         Monday nights. To learn anything, but especially a subject as diverse as programming a robotic car, it is necessary to solve progressively more challenging problems on your own, and the homeworks will give you an opportunity to use what you have learned and develop your programming skills. The homework assignments will be similar to the in-class quizzes and mostly cover material from that week's unit, except the homework assignments will include larger problems for you to solve on your own.
+        </p>
+       </div>
+       <div>
+        <a name="q7">
+        </a>
+        <p>
+         <b class="sans">
+          Is there a final exam?
+         </b>
+         <br />
+         Yes. The final week of the course will be a final exam, starting on April 2, 00:00 UTC and due April 7, 23:59 UTC.
+        </p>
+       </div>
+       <div>
+        <a name="q8">
+        </a>
+        <p>
+         <b class="sans">
+          How will my final grade be determined?
+         </b>
+         <br />
+         Your final grade will be the maximum of two different calculations. The first is determined 50% based on the homework assignments and 50% based on the final exam. For the homework assignments, your lowest homework score will be dropped. The remaining five homework assignments will count equally, as 10% of your total grade each. The alternative weighting is based 100% on the final exam. This allows students starting late to still earn a perfect score in the class.
+        </p>
+       </div>
+       <div>
+        <a name="q9">
+        </a>
+        <p>
+         <b class="sans">
+          Do I need to download Python on my computer?
+         </b>
+         <br />
+         You do not need to download Python to take the course, as we provide all the necessary tools right in your browser. If you prefer to experiment locally you can download
+         <a href="http://www.python.org/download/releases/2.6.7/">
+          Python
+         </a>
+         .
+        </p>
+       </div>
+       <div>
+        <a name="q10">
+        </a>
+        <p>
+         <b class="sans">
+          How do I get help?
+         </b>
+         <br />
+         We love to see an active academic community, so we encourage you to post your question to the
+         <a href="http://www.udacity-forums.com/cs373">
+          forum
+         </a>
+         . Hopefully one of your peers will provide an adequate answer, but if not one of our course managers will chime in.
+        </p>
+        <p>
+        </p>
+       </div>
+       <div>
+        <a name="q11">
+        </a>
+        <p>
+         <b class="sans">
+          I think one of the quizzes or homework assignments is judging my answer incorrectly, who do I contact?
+         </b>
+         <br />
+         Post your solution to the
+         <a href="http://www.udacity-forums.com/cs373">
+          forum
+         </a>
+         . If we realize an error in grading, or that multiple answers are correct, we will regrade the homework.
+        </p>
+       </div>
+       <div>
+        <a name="q12">
+        </a>
+        <p>
+         <b class="sans">
+          What are office hours?
+         </b>
+         <br />
+         Once a week we will take some of the top questions from the forum and Sebastian, Andy and other guests will answer them in a recorded video.  We will usually post office hours on Friday, so there is enough time to collect questions for that week's unit, but still some time for students to benefit from our responses in that unit's homework assignment.
+        </p>
+       </div>
+       <div>
+        <a name="q13">
+        </a>
+        <p>
+         <b class="sans">
+          Something on the site isn't working, who do I contact?
+         </b>
+         <br />
+         Fill out the Contact Us form found at the bottom of each Udacity webpage.
+        </p>
+       </div>
+       <div>
+        <a name="q14">
+        </a>
+        <p>
+         <b class="sans">
+          What are the rules on collaboration?
+         </b>
+         <br />
+         Working with other students is often the best way to learn new things, and we hope students in the class will form vibrant communities, both on-line and in-person, to help each other learn.  The key is to use collaboration as a way to enhance learning, not as a way of sharing answers without understanding them.
+        </p>
+        <p>
+         You are welcome (and encouraged) to view the lectures with others, and discuss and work together on answering the in-lecture quizzes.  For the homeworks, you may discuss the questions with other students in the on-line forums and in-person study groups, but everything you submit should be your own work.  For the final exam, you are not permitted to work with anyone else, and should only ask clarification questions on the on-line forums which will be answered by the course staff.
+        </p>
+       </div>
+      </div>
+      <!-- end tab-classfaq -->
+     </div>
+     <!-- end tabs -->
+     <!-- end tabbed content -->
+     <div style="clear: both">
+     </div>
+     <script src="/media/js/jquery.tools.min.js">
+     </script>
+     <script type="text/javascript">
+      $(document).ready(function() {
+	$("#tabs").tabs();
+});
+     </script>
+    </div>
+   </div>
+   <div id="footer-pusher">
+   </div>
+  </div>
+  <div id="footer">
+   <!-- <div class="clear"></div> -->
+   <div id="bottom_bin">
+    <div class="width960">
+     <div id="social">
+      <p>
+       Follow Us
+      </p>
+      <a href="http://www.facebook.com/pages/Udacity/174179219354091?sk=wall" target="_blank">
+       <img src="/media/img/icon_facebook-10x19.png" width="10" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="http://twitter.com/udacity" target="_blank">
+       <img src="/media/img/icon_twitter-28x19.png" width="28" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="https://plus.google.com/116286004036789369492/posts" target="_blank">
+       <img src="/media/img/icon_gplus-18x19.png" width="18" height="19" border="0" alt="Facebook" />
+      </a>
+     </div>
+     <div id="copyright-notice">
+      <p>
+       &copy; 2012 Udacity, Inc.
+      </p>
+     </div>
+     <div id="bottom-menu">
+      <p>
+       <a href="/">
+        Home
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/udacity">
+        About
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/careers/">
+        Careers
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/contact">
+        Contact
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/legal/">
+        Legal
+       </a>
+      </p>
+     </div>
+     <div class="clear">
+     </div>
+    </div>
+   </div>
+   <!-- end bottom_bin -->
+   <!-- <div class="clear">&nbsp;</div> -->
+  </div>
+ </body>
+</html>
