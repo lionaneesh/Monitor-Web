@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Udacity - Free Classes. Awesome Instructors. Inspiring Community.
+  </title>
+  <link rel="stylesheet" type="text/css" href="/media/css/udacity.css?16" />
+  <script src="//www.google.com/jsapi?key=ABQIAAAAOx-pTXyuaUsotjKevTem5RRY-J96ZG6vUeHysYWcYheHIRtZ7hQ7CQ5yRTKcwjX2z4sBOrajFOZMkA">
+  </script>
+  <script type="text/javascript">
+   if (!window.console) {
+       window.console = {
+          log : function(){},
+          debug : function(){},
+          info : function(){},
+          warn : function(){}
+       }
+    }
+    google.load("jquery", "1.7.1", {uncompressed:true});
+    google.load("jqueryui", "1.8.16");
+  </script>
+  <!--script src="http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js"></script -->
+  <script src="/media/js/jquery.form.js">
+  </script>
+  <script src="/media/js/jquery.history.js">
+  </script>
+  <script src="/media/js/json2.js">
+  </script>
+  <script src="/media/js/udacity.js?16">
+  </script>
+  <script src="/media/js/pages.js?16">
+  </script>
+  <script type="text/javascript">
+   csrf_token = "hhmeLzYCHcrALBtK9RQdYqS6uMvXmfM5RqDHFMzkjmkJ4XS7X3XNTsUQGmXb"
+  </script>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28524234-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+$(document).ready(function() {
+    // use js to position botbar at either end of document or bottom of window, whichever is lower
+    var windowHeight = $(window).height();   // returns height of browser viewport
+    var contentHeight = $("body").height(); // returns height of HTML document
+    var footerHeight = $("div#bottom_bin").height();
+    var footerTop = windowHeight - footerHeight - 50;
+    if (windowHeight > contentHeight) {
+        //$("div#bottom_bin").css("top",footerTop);
+    }
+    //alert('window: '+windowHeight+' content: '+contentHeight+' footer: '+footerHeight+' top: '+footerTop);
+});
+  </script>
+ </head>
+ <body>
+  <div id="not-footer">
+   <div id="top_bin">
+    <div id="top_content" class="width960">
+     <!-- logo -->
+     <div class="udacity float-left">
+      <a href="/">
+       <img src="/media/img/udacity-beta-sm-293x28.png" width="293" height="28" alt="Udacity" />
+      </a>
+     </div>
+     <!-- buttons -->
+     <div class="user-block">
+      <!-- SIGN IN BUTTON & OVERLAY -->
+      <div id="user-button" rel="user-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN IN
+       </span>
+      </div>
+      <div id="user-overlay" class="overlay">
+       <form id="signin-form" method="post">
+        <p>
+         <label for="email-field" class="login-label">
+          Email
+         </label>
+        </p>
+        <input class="login-field" type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field" class="login-label">
+          Password
+         </label>
+        </p>
+        <input class="login-field" type="password" name="password" required="required" />
+        <p>
+         <a href="" class="modal-input" id="forgot-password" rel="#forgot-password-overlay">
+          Forgot your password?
+         </a>
+        </p>
+        <br />
+        <!-- TODO make a display block in css? -->
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- SIGN UP BUTTON & OVERLAY -->
+      <div id="signup-button" rel="signup-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN UP
+       </span>
+      </div>
+      <div id="signup-overlay" class="overlay">
+       <form id="signup-form" action="/" method="post">
+        <p>
+         <label for="name-field">
+          Name
+         </label>
+        </p>
+        <input type="text" name="name" required="required" />
+        <p>
+         <label for="email-field">
+          Email
+         </label>
+        </p>
+        <input type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field">
+          Choose a password
+         </label>
+        </p>
+        <input type="password" name="password" required="required" />
+        <p>
+         <label for="tos-field">
+          I accept the
+          <a href="/legal/" target="_blank">
+           TOS
+          </a>
+         </label>
+         <input type="checkbox" name="tos" required="required" />
+        </p>
+        <br />
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- CLASS LIST BUTTON & OVERLAY -->
+      <div id="courses-button" rel="courses-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        CLASS LIST
+       </span>
+      </div>
+      <div id="courses-overlay" class="overlay">
+       <!-- TODO eventually load course list from database -->
+       <p>
+        <a href="/overview/Course/cs101">
+         CS 101: Building a Search Engine
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/overview/Course/cs373">
+         CS 373: Programming a Robotic Car
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/" class="arrow">
+         SEE ALL UPCOMING CLASSES
+        </a>
+       </p>
+      </div>
+     </div>
+     <!-- end user-block -->
+     <div class="header-title">
+      <h2>
+      </h2>
+     </div>
+     <div class="header-text clear">
+     </div>
+     <!-- header nav function starts here -->
+     <div id="header-nav clear">
+      <ul class="topnav">
+       <li class="topnav selected">
+        <a href="/legal/">
+         Terms of Service
+        </a>
+       </li>
+       <li class="topnav">
+        <a href="/legal/privacy">
+         Privacy Policy
+        </a>
+       </li>
+      </ul>
+      <div class="clear">
+      </div>
+     </div>
+     <!-- end header-nav -->
+     <!-- header nav function ends here -->
+    </div>
+    <!-- end top_content -->
+    <div class="clear">
+    </div>
+    <div style="padding: 10px; text-align: center; color: black; background-color: #d26a33; font-size: 1.2em;" id="javascript_warning">
+     <img src="/media/img/alert.gif" style="vertical-align: middle;" />
+     <span>
+      This website requires JavaScript to be
+ 	enabled. Please make sure JavaScript is enabled in your web browser
+ 	preferences and any JavaScript blockers are disabled for this site.
+     </span>
+    </div>
+   </div>
+   <!-- end top_bin -->
+   <script type="text/javascript">
+    $("#javascript_warning").css("display", "none");
+   </script>
+   <div class="modal small" id="forgot-password-overlay">
+    <div class="close">
+    </div>
+    <h1>
+     FORGOT YOUR PASSWORD?
+    </h1>
+    <p>
+     Please enter the e-mail address you used to enroll in a Udacity class and we will send you a link to reset your password.
+    </p>
+    <form id="forgot-password-form">
+     <div class="error">
+     </div>
+     <p>
+      <label for="email-field">
+       Email
+      </label>
+     </p>
+     <input id="name-field" type="email" name="email" required="required" />
+     <button class="button" type="submit">
+      SUBMIT ADDRESS
+     </button>
+    </form>
+   </div>
+   <div id="content-background">
+    <div id="content" class="width960">
+     <div id="legal">
+      <h1>
+       Terms of Service
+      </h1>
+      <hr />
+      <p>
+       Know Labs, Inc. (collectively, "we," "us" or "Know Labs") provides you access 
+to the Know Labs websites, available at the entry-point URL
+       <a href="http://www.udacity.com/" target="_blank">
+        www.udacity.com
+       </a>
+       ,
+       <a href="http://www.knowlabs.com/" target="_blank">
+        www.knowlabs.com
+       </a>
+       and
+       <a href="http://www.ai-class.com/" target="_blank">
+        http://www.ai-class.com
+       </a>
+       , 
+(each individually a "Class Site," and collectively the "Class Sites"), and to the information, 
+services and other materials available on and through the Class Sites, 
+(collectively with the Class Sites, the "Online Courses"), subject 
+to the terms and conditions described in this document (the "Terms 
+of Use") and any other guidelines, rules or licenses posted in connection 
+with the Online Courses.
+      </p>
+      <ol type="1">
+       <li>
+        <b>
+         your 
+  acceptance of terms.
+        </b>
+       </li>
+      </ol>
+      <p>
+       By accessing and/or using the Class Sites or Online Courses, you agree to be bound 
+by the Terms of Use, whether you are:
+      </p>
+      <ul class="bulleted">
+       <li>
+        a "Visitor," 
+  meaning you simply browse the Class Sites, including, without limitation, 
+  through a mobile or other wireless device, or otherwise use the Class 
+  Sites without being registered, or
+       </li>
+       <li>
+        a "Student," 
+  meaning that you have registered with Know Labs for a User ID and User 
+  Password (defined below) and will complete the homework assignments 
+  and exams, or
+       </li>
+       <li>
+        an "Attendee," 
+  meaning that you have registered with Know Labs for a User ID and User 
+  Password (defined below) and that you intend to audit the Online Courses, 
+  i.e., attend or view lectures online without completing the homework 
+  assignments, exams or other course work.
+       </li>
+       <li>
+        The term "User" 
+  refers to a Visitor, Student or Attendee.
+       </li>
+      </ul>
+      <p>
+       You are authorized 
+to use the Class Sites only if you agree to abide by all applicable 
+laws, rules and regulations and the terms of this Terms of Use.
+      </p>
+      <p>
+       IF YOU DO NOT 
+AGREE TO THIS TERMS OF USE, THEN YOU MAY NOT ACCESS OR USE THE CLASS 
+SITES OR THE ONLINE COURSES.  KNOWLAB'S ACCEPTANCE IS EXPRESSLY 
+CONDITIONED UPON YOUR ASSENT TO ALL OF THE TERMS AND CONDITIONS OF THESE 
+TERMS OF USE, TO THE EXCLUSION OF ALL OTHER TERMS.
+      </p>
+      <p>
+       We reserve 
+the right to change or modify the Terms of Use at our sole discretion 
+at any time.  Any change or modification to the Terms of Use will 
+be effective immediately upon posting by Know Labs on a Class Site.  
+We will take reasonable steps to notify you of any changes or modifications 
+to the Terms of Use, but you are responsible for periodically reviewing 
+the most up to date version of the Terms of Use.
+      </p>
+      <p>
+       Your continued 
+use of the Class Sites or Online Courses constitutes acceptance of any 
+changes or modification made by us to the Terms of Use.
+      </p>
+      <ol type="1" start="2">
+       <li>
+        <b>
+         user accounts 
+  and user registration.
+        </b>
+       </li>
+      </ol>
+      <p>
+       While any Visitor 
+can view the Class Sites, in order to use the Class Sites and take part 
+in the Online Courses, you must select a login identification ("User 
+ID") and a user password ("User Password") that is unique and 
+entirely different from your User ID (collectively, a "User Account").  
+You agree that you will never divulge or share access or access information 
+to your User Account with any third party for any reason.
+      </p>
+      <p>
+       In setting 
+up your User Account, you may be prompted or required to enter additional 
+information, including but not limited to your name and email address.  
+Additional information may be required to confirm your identity.  
+You understand and agree that all information provided by you is accurate, 
+current and complete and that you will maintain and update your information 
+to keep it accurate, current and complete.  You acknowledge that 
+if any information provided by you is untrue, inaccurate, not current 
+or incomplete, we reserve the right to terminate your use of the Class 
+Sites and your enrollment in the Online Courses.
+      </p>
+      <p>
+       Our Privacy 
+Policy is hereby incorporated into this Terms of Use by reference.  
+Please read this policy carefully for disclosures relating to the collection, 
+use, and disclosure of your personal information.
+      </p>
+      <p>
+       The Class Sites 
+are available to any User.  However, access to the Online Courses 
+is restricted to Attendees or Students that have a registered User Account.  
+By registering, you agree that:
+      </p>
+      <ul class="bulleted">
+       <li>
+        you are registered 
+  for the course only once and will not set up multiple User Accounts; 
+  and
+       </li>
+       <li>
+        you will abide by 
+  the Terms of Use.
+       </li>
+      </ul>
+      <p>
+       Additional 
+requirements apply to Students.  As a Student, in addition to the 
+points above, you agree that:
+      </p>
+      <ul class="bulleted">
+       <li>
+        you are registering 
+  with the intent to attend lectures, complete homework assignments, take 
+  and submit exams and other activities related to taking the class, and 
+  subject to satisfactory performance determined in the sole discretion 
+  of the instructors, you may be awarded a letter of completion signed 
+  by the instructors upon conclusion of the applicable Online Course;
+       </li>
+       <li>
+        you acknowledge 
+  that any letter of completion awarded will not be affiliated with any 
+  college or university and will not stand in the place of a course taken 
+  at an accredited institution;
+       </li>
+       <li>
+        you acknowledge 
+  that instructors of any Online Course will not be involved in any attempts 
+  to get the course recognized by any educational or accredited institution; 
+  and
+       </li>
+       <li>
+        you will abide by 
+  the Student Conduct Policy listed below.
+       </li>
+      </ul>
+      <p>
+       If you do not 
+qualify, you may not attend the Online Courses.
+      </p>
+      <p>
+       Know Labs and 
+the instructors of the Online Courses reserve the right to alter, modify 
+or rearrange the schedule of topics for the Online Courses, as well 
+as the point value or weight of assignments, tests, quizzes, exams, 
+projects and other such evaluations of progress.  A letter of completion 
+shall be awarded, in the sole discretion of Know Labs and the instructors 
+for the Online Courses, to Students who have completed the course to 
+the satisfaction of the instructors.  By attending the Online Courses, 
+Students acknowledge that Know Labs and the instructors maintain the 
+right and ability to adapt, modify or revise the Online Courses as Know Labs 
+and the instructors deem appropriate.
+      </p>
+      <ol type="1" start="3">
+       <li>
+        <b>
+         student conduct 
+  policy.
+        </b>
+       </li>
+      </ol>
+      <p>
+       To the extent 
+a Student is registered as a student in an accredited institution or 
+educational institution with its own policy regarding student conduct 
+or an "honor code," those terms shall apply to any such Student.  
+Additionally, unless the following conflicts with such a policy or honor 
+code, a Student of the Online Courses agrees that he or she:
+      </p>
+      <ul class="bulleted">
+       <li>
+        will not harass 
+  other Students, Attendees or Visitors;
+       </li>
+       <li>
+        will not cheat on 
+  any homework assignment or exams for the Online Courses;
+       </li>
+       <li>
+        will not post any 
+  of the course materials online;
+       </li>
+       <li>
+        will not share content 
+  or solutions to homework assignments or exams; and
+       </li>
+       <li>
+        will notify the 
+  instructors immediately if he or she becomes aware of any other Student 
+  cheating or breaching the Terms of Use.
+       </li>
+      </ul>
+      <ol type="1" start="4">
+       <li>
+        <b>
+         user conduct 
+  policy.
+        </b>
+       </li>
+      </ol>
+      <p>
+       As a condition 
+of accessing the Class Sites and/or using the Online Courses, you agree 
+not to (a) reproduce, duplicate, copy, sell, resell or exploit for any 
+commercial purposes any portion of the Online Courses other than as 
+expressly allowed under these Terms of Use; (b) use Know Labs' name, 
+trademarks, service marks, or other materials in connection with, or 
+to transmit, any unsolicited communications or emails; (c) use any high 
+volume, automated, or electronic means to access the Class Sites (including 
+without limitation robots, spiders or scripts); (d) frame the Class 
+Sites, place pop-up windows over its pages, or otherwise affect the 
+display of its pages; (e) falsely state, impersonate, or otherwise misrepresent 
+your identity, including but not limited to the use of a pseudonym or 
+misrepresenting your affiliations with a person or entity, past or present; 
+(f) force headers or otherwise manipulate identifiers in order to disguise 
+the origin of any communication transmitted through the Online Courses; 
+or (g) interfere with or disrupt the Online Courses or servers or networks 
+connected to the Online Courses, or disobey any requirements, procedures, 
+policies or regulations of networks connected to the Online Courses.
+      </p>
+      <p>
+       In addition, 
+you may not post, upload, or transmit to or otherwise make available 
+through the Class Sites or Online Courses any content, communications, 
+or other information (collectively, "Unauthorized Content"):
+      </p>
+      <ul class="bulleted">
+       <li>
+        that is obscene, 
+  fraudulent, indecent, or libelous or that defames, abuses, harasses, 
+  discriminates against or threatens others;
+       </li>
+       <li>
+        that contains any 
+  viruses, Trojan horses, worms, time bombs, cancelbots, or other disabling 
+  devices or other harmful components intended to or that may damage, 
+  detrimentally interfere with, surreptitiously intercept, or expropriate 
+  any system, data, or personal information;
+       </li>
+       <li>
+        that you do not 
+  have the right to disclose or make available under any law or under 
+  contractual or fiduciary relationships (such as insider information, 
+  or proprietary and confidential information learned or disclosed as 
+  part of employment relationships or under nondisclosure agreements);
+       </li>
+       <li>
+        that consists of 
+  any high volume, automated, or electronic means to access the Class 
+  Sites (including without limitation robots, spiders or scripts);
+       </li>
+       <li>
+        that infringes the 
+  copyright, patent, trademark, trade secret, right of publicity, or other 
+  intellectual property or proprietary right of any third party;
+       </li>
+       <li>
+        that violates the 
+  rights of other Users of the Class Sites; or
+       </li>
+       <li>
+        that violates any 
+  applicable local, state, national or international law or otherwise 
+  advocates or encourages any illegal activity.
+       </li>
+      </ul>
+      <ol type="1" start="5">
+       <li>
+        <b>
+         Know Labs INTELLECTUAL 
+  PROPERTY RIGHTS.
+        </b>
+       </li>
+      </ol>
+      <p>
+       The Class Sites 
+are owned and operated by Know Labs.  Know Labs reserves the right 
+at any time and from time to time to modify, discontinue, temporarily 
+or permanently, the Class Sites, or any part of portion thereof, with 
+or without notice to you.  You agree that Know Labs shall not be 
+liable to you or to any third party for any modifications, suspensions 
+or discontinuance of the Class Sites, or any portion thereof.  
+Nothing in these Terms of Use shall be construed to obligate Know Labs 
+to maintain and support the Class Sites, or any part of portion thereof, 
+during the term of these Terms of Use.
+      </p>
+      <p>
+       All content 
+or other material available on the Class Sites or through the Online 
+Courses, including but not limited to programs, code, images, text, 
+layouts, arrangements, displays, illustrations, documents, audio and 
+video clips, HTML, and files (collectively, the "Content"), are 
+the property of Know Labs and/or its affiliates or licensors and are 
+protected by copyright, patent and/or other proprietary intellectual 
+property rights under United States and foreign law.
+      </p>
+      <p>
+       Know Labs logos, 
+trademarks and service marks which may appear on the Class Sites ("Marks"), 
+are the property of Know Labs and are protected under United States and 
+foreign laws.  All other trademarks, service marks and logos used 
+on the Class Sites, with or without attribution, are the trademarks, 
+service marks or logos of their respective owners.  In addition, 
+elements of the Class Sites are protected by trade dress and other federal 
+and state intellectual property laws and may not be copied, reproduced, 
+downloaded or distributed in any way in whole or in part without the 
+express written consent of Know Labs.
+      </p>
+      <p>
+       Except as otherwise 
+expressly permitted in these Terms of Use, you may not copy, sell, display, 
+reproduce, publish, modify, create derivative works from, transfer, 
+distribute or otherwise commercially exploit in any manner the Class 
+Sites, Online Courses, or any Content.  You may not reverse-engineer, 
+decompile, disassemble or otherwise access the source code for any software 
+that may be used to operate the Online Courses.  From time to time, 
+Know Labs may include software, code, instructions, or other such information 
+in the Content or materials for the Online Courses; any such information 
+is provided on an "as-is" basis for instructional purposes only 
+and is subject to the Disclaimer of Warranties and Limitation of Liabilities 
+sections below and other terms herein.  Any use of such information, 
+commercial or non-commercial, outside of this instructional use is strictly 
+prohibited.  Know Labs and/or its affiliates and licensors reserve 
+all rights not expressly granted herein to the Class Sites, Online Courses, 
+Content, and Marks.
+      </p>
+      <p>
+       Subject to 
+your compliance with these Terms of Use, Know Labs grants you a non-exclusive, 
+non-transferable, non-sublicensable limited right and license to access, 
+internally use and display the Class Sites and Online Courses at your 
+location solely as necessary to participate in the Online Courses.  
+You must abide by all copyright notices or restrictions contained on 
+the Class Sites or the Content.  You may not delete any attributions, 
+legal or proprietary notices on the Class Sites or the Content.
+      </p>
+      <ol type="1" start="6">
+       <li>
+        <b>
+         USER PROVIDED 
+  CONTENT.
+        </b>
+       </li>
+      </ol>
+      <p>
+       The Online 
+Courses may provide you with the ability to upload certain information 
+and materials for use with the Class Sites or Online Courses ("User 
+Content"), e.g., questions, hypothetical, examples, etc.  Know Labs 
+does not claim ownership of any User Content you may submit or make 
+available for inclusion on the Class Sites or Online Courses.  
+Accordingly, subject to the license granted to Know Labs below, User 
+will be the sole and exclusive owner of any and all rights, title and 
+interest in and to the User Content.
+      </p>
+      <p>
+       From time to 
+time, Know Labs may request Users to make translations of the lecture 
+videos for the Online Courses into other languages and submit such translations 
+to Know Labs.  Upon Know Labs' request, 
+you may make such translations provided that you agree to submit such 
+translations to Know Labs and such translations shall be considered User 
+Content and subject to the license, representations, and warranties 
+below (even if you fail to submit the translations to Know Labs); and 
+further provided that, you acknowledge and agree that by creating or 
+submitting any such translation, you shall not obtain any rights or 
+license in or to Know Labs' and its affiliate's intellectual property, 
+including but not limited to the lecture videos of the Online Courses, 
+related materials, or any underlying content.
+      </p>
+      <p>
+       With respect 
+to User Content you submit or make available to Know Labs (including 
+for inclusion on the Class Sites or Online Courses), you grant Know Labs 
+an irrevocable, worldwide, perpetual, royalty-free and non-exclusive 
+license to use, distribute, reproduce, modify, adapt, publicly perform 
+and publicly display such User Content on the Class Sites or in the 
+Online Courses or otherwise exploit the User Content, with the right 
+to sublicense such rights (to multiple tiers); except that, with regard 
+to User Content comprised of a translation of an Online Course lecture 
+video, you agree that the license granted to Know Labs above shall be 
+exclusive.  Know Labs reserves the right to remove any User Content at 
+any time and for any reason.
+      </p>
+      <p>
+       To the extent 
+that you provide User Content, you represent and warrant that (a) you 
+have all necessary rights, licenses and/or clearances to provide such 
+User Content and permit Know Labs to use such User Content as provided 
+above, (b) such User Content is accurate and reasonably complete, (c) 
+as between you and Know Labs, you shall be responsible for the payment 
+of any third party fees related to the provision and use of such User 
+Content, and (d) such User Content does not and will not infringe or 
+misappropriate any third party rights or constitute a fraudulent statement 
+or misrepresentation or unfair business practices.
+      </p>
+      <p>
+       With respect 
+to any submissions of User Content, you agree to comply with all applicable 
+local rules including but not limited to rules regarding online conduct 
+and acceptable content.  Specifically, you agree to comply with 
+all applicable laws regarding the transmission of technical data exported 
+from the United States or the country in which you reside.
+      </p>
+      <ol type="1" start="7">
+       <li>
+        <b>
+         USE OF PROVIDED 
+  COMMUNICATIONS METHODS.
+        </b>
+       </li>
+      </ol>
+      <p>
+       The Online 
+Courses may provide you with the ability to post messages to user forums 
+or user review pages, enter chat rooms or send similar messages and 
+communications to third party service providers, other users and/or 
+Know Labs. You agree to use communication methods available on the Online 
+Courses only to send communications and materials related to the subject 
+matter for which Know Labs provided the communication method, and you 
+further agree that all such communications by you shall be subject to 
+and governed by the Terms of Use. By using any of the communications 
+methods available on the Online Courses, you acknowledge and agree that 
+(a) all communications methods constitute public, and not private, means 
+of communication between you and the other party or parties, (b) communications 
+sent to or received from third party service providers or other third 
+parties are not be endorsed, sponsored or approved by Know Labs in any 
+manner (unless expressly stated otherwise by Know Labs) and (c) communications 
+are not pre-reviewed, post-reviewed, screened, archived or otherwise 
+monitored by Know Labs in any manner, though Know Labs reserves the right 
+to do so at any time at its sole discretion in accordance with the Terms 
+of Use.
+      </p>
+      <ol type="1" start="8">
+       <li>
+        <b>
+         DISCLAIMER OF 
+  WARRANTIES.
+        </b>
+       </li>
+      </ol>
+      <p>
+       You expressly 
+acknowledge and agree that your use of the Class Sites, the Online Courses 
+and all content and services available on the Class Sites is at your 
+sole risk and responsibility.  THE ONLINE COURSES (INCLUDING ANY 
+CONTENT) IS PROVIDED "AS IS" AND "AS AVAILABLE" WITH NO REPRESENTATIONS 
+OR WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT 
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR 
+A PARTICULAR PURPOSE, AND NONINFRINGEMENT.  YOU ASSUME TOTAL RESPONSIBILITY 
+AND THE ENTIRE RISK FOR YOUR USE OF THE ONLINE COURSES AND CONTENT.
+      </p>
+      <p>
+       WITHOUT LIMITING 
+THE FOREGOING, WE DO NOT WARRANT THAT (A) THE CLASS SITES, CONTENT, 
+OR THE ONLINE COURSES WILL MEET YOUR REQUIREMENTS OR EXPECTATIONS OR 
+ACHIEVE THE INTENDED PURPOSES, (B) THE CLASS SITES OR THE ONLINE COURSES 
+WILL NOT EXPERIENCE OUTAGES OR OTHERWISE BE UNINTERRUPTED, TIMELY, SECURE 
+OR ERROR-FREE, (C) THE INFORMATION OR CONTENT OBTAINED THROUGH THE CLASS 
+SITES OR THE ONLINE COURSES WILL BE ACCURATE, COMPLETE, CURRENT, ERROR-FREE, 
+COMPLETELY SECURE OR RELIABLE, OR (D) THAT DEFECTS IN OR ON THE CLASS 
+SITES OR CONTENT WILL BE CORRECTED.   YOU ASSUME ALL RISK 
+OF PERSONAL INJURY, INCLUDING DEATH AND DAMAGE TO PERSONAL PROPERTY, 
+SUSTAINED FROM USE OF THE ONLINE COURSES AND CONTENT.
+      </p>
+      <ol type="1" start="9">
+       <li>
+        <b>
+         LIMITATION OF 
+  LIABILITY.
+        </b>
+       </li>
+      </ol>
+      <p>
+       UNDER NO CIRCUMSTANCES 
+SHALL KNOW LABS BE LIABLE TO THE USER OR ANY THIRD PARTY WITH RESPECT 
+TO ANY SUBJECT MATTER OF THIS TERMS OF USE (INCLUDING ANY BREACH OF 
+SECURITY OR DATA LOSS) UNDER ANY CONTRACT, NEGLIGENCE, STRICT LIABILITY 
+OR OTHER THEORY FOR ANY INDIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES 
+OR LOST PROFITS, LOSS OR INACCURACY OF DATA OR DOCUMENTS OR COST OF 
+PROCUREMENT OF SUBSTITUTE GOODS, SERVICES OR TECHNOLOGY, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGES OR WHETHER ANY REMEDY SET FORTH HEREIN 
+FAILS OF ITS ESSENTIAL PURPOSE OR OTHERWISE.  KNOW LABS' TOTAL 
+CUMULATIVE LIABILITY ARISING OUT OF OR RELATED TO THIS TERMS OF USE 
+WILL NOT EXCEED THE GREATER OF TWENTY U.S. DOLLARS ($20) OR THE AMOUNT 
+OF FEES RECEIVED BY KNOW LABS FROM THE COMPLAINING USER FOR THE USE OF 
+THE CLASS SITES OR ONLINE COURSES; THE EXISTENCE OF MULTIPLE CLAIMS 
+SHALL NOT EXPAND OR INCREASE THE FOREGOING LIMITATION.  THE PARTIES 
+ACKNOWLEDGE THAT THIS CLAUSE REFLECTS THE AGREED UPON ALLOCATION OF 
+RISK BETWEEN THE PARTIES AND THAT KNOW LABS WOULD NOT ENTER INTO THIS 
+TERMS OF USE OR MAKE THE ONLINE COURSES AVAILABLE TO USER WITHOUT THESE 
+LIMITATIONS ON LIABILITY. THIS LIMITATION OF LIABILITY WILL APPLY NOTWITHSTANDING 
+THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY SET FORTH HEREIN.
+      </p>
+      <ol type="1" start="10">
+       <li>
+        <b>
+         LINKING TO OTHER 
+  SITES.
+        </b>
+       </li>
+      </ol>
+      <p>
+       The Class Sites may contain 
+links to pages on other websites ("Linked Sites"), and those Linked 
+Sites may contain content or offer products and/or services for sale.  
+Know Labs does not author, edit, control, or monitor these Linked Sites.  
+You acknowledge and agree that (a) we have no responsibility for the 
+accuracy or availability of information provided by Linked Sites, and 
+(b) we do not control or endorse the sponsors of such Linked Sites or 
+the content, products, advertising, or other materials presented on 
+such Linked Sites.  We may remove any Linked Sites from the Class 
+Sites at any time for any reason or for no reason.
+      </p>
+      <p>
+       KNOW LABS WILL 
+NOT BE LIABLE FOR ANY TRANSACTIONS conducted by you WITH THIRD PARTIES 
+through the linked Sites nOR for ANY LIABILITY 
+ARISING FROM the representations OR INFORMATION 
+PROVIDED on such Linked Sites.
+      </p>
+      <p>
+       We appreciate that Linked Sites 
+may contain material in which the operator of the Linked Sites has intellectual 
+property rights.  We respect those rights and provide the links 
+for information purposes only.  The fact that we have linked to 
+any Linked Site does not create or imply any relationship or partnership 
+with the operator of such Linked Site.
+      </p>
+      <ol type="1" start="11">
+       <li>
+        <b>
+         INDEMNITY.
+        </b>
+       </li>
+      </ol>
+      <p>
+       You agree to indemnify, defend 
+and hold harmless Know Labs, its subsidiaries and affiliates, and each 
+of their officers, directors, agents, employees, and assignees from 
+any and all claims, liabilities, expenses and damages, including reasonable 
+attorneys' fees and costs, made by any third party relating to or 
+arising out of (a) your use or attempted use of the Class Sites or Online 
+Courses in violation of the Terms of Use, (b) your use or attempted 
+use of any code, program, data, information or any other Content provided 
+on the Class Sites or through the Online Courses in a manner inconsistent 
+with these Terms of Use, (c) your use or your violation of any law or 
+rights of any third party, or (d) your information you post or otherwise 
+make available on the Class Sites or through the Online Courses, including 
+without limitation any claim of infringement of intellectual property 
+or other proprietary rights.
+      </p>
+      <ol type="1" start="12">
+       <li>
+        <b>
+         TERMINATION 
+  RIGHTS.
+        </b>
+       </li>
+      </ol>
+      <p>
+       You agree that 
+Know Labs, in its sole discretion, may terminate your use of the Class 
+Sites or Online Courses for any reason or no reason, including, without 
+limitation, if Know Labs believes that you have (a) breached the Terms 
+of Use; (b) infringed the intellectual property rights of a third party; 
+(c) posted, uploaded or transmitted Unauthorized Content to the Class 
+Sites; or (d) violated or acted inconsistently with the letter or spirit 
+of these Terms of Use.  You agree that any termination of your 
+access to the Class Sites or Online Courses may be effected without 
+prior notice to you and that Know Labs shall not be liable to you nor 
+any third party for any termination of your account or the Online Courses.
+      </p>
+      <ol type="1" start="13">
+       <li>
+        <b>
+         DISPUTE PROCEDURE 
+  AND CLAIMS OF COPYRIGHT INFRINGEMENT.
+        </b>
+       </li>
+      </ol>
+      <p>
+       Know Labs respects 
+the rights and intellectual property of others, and we ask our users 
+to do the same. If you believe that your product or other work has been 
+misrepresented or used in a way that constitutes copyright infringement, 
+or your intellectual property rights have been otherwise violated, please 
+provide Know Labs' Copyright Agent with the following information:
+      </p>
+      <p>
+       (a) an electronic 
+or physical signature of the person authorized to act on behalf of the 
+owner of the product, copyright or other intellectual property interest;
+      </p>
+      <p>
+       (b) a description 
+of the product, work or other intellectual property that you claim has 
+been misrepresented or infringed;
+      </p>
+      <p>
+       (c) a description 
+of where the material that you claim is misrepresenting or infringing 
+your product, work or other intellectual property is located on the 
+Online Courses;
+      </p>
+      <p>
+       (d) your address, 
+telephone number, and email address;
+      </p>
+      <p>
+       (e) a statement 
+by you that you have a good faith belief that the disputed use is not 
+authorized by the owner of the product, work, copyright or intellectual 
+property, or its agent, or applicable law; and
+      </p>
+      <p>
+       (f) a statement 
+by you, made under penalty of perjury, that the above information in 
+your notice is accurate and that you are the product, work, copyright 
+or intellectual property owner or authorized to act on such owner's 
+behalf.
+      </p>
+      <p>
+       Know Labs' 
+Copyright Agent for notices of disputes or claims of copyright or other 
+intellectual property infringement can be reached as follows:
+      </p>
+      <p>
+       Copyright Agent
+       <br />
+       Know Labs, Inc.
+       <br />
+       2390 El Camino Real Suite 100
+       <br />
+       Palo Alto, CA 94306
+      </p>
+      <p>
+       Phone: 650-492-5003
+       <br />
+       Email: info@knowlabs.com
+      </p>
+      <ol type="1" start="14">
+       <li>
+        <b>
+         MISCELLANEOUS   PROVISIONS.
+        </b>
+       </li>
+      </ol>
+      <p>
+       You affirm 
+that you are either 18 years of age or older, or an emancipated minor, 
+or possess legal parental or guardian consent, and are fully able and 
+competent to enter into these terms, conditions, obligations, affirmations, 
+representations and warranties set forth in these Terms of Use.  
+In any case, you affirm that you are over the age of 13 as the Online 
+Courses are not intended for children under 13.  If you under 13 
+years of age, do not use the Class Sites or Online Courses.
+      </p>
+      <p>
+       Know Labs may 
+freely transfer or assign any portion of its rights or delegate its 
+obligations under these Terms of Use.  You shall not transfer or 
+assign, by operation of law or otherwise, any portion of your rights 
+or delegate your obligations under these Terms of Use without the prior 
+written consent of Know Labs.
+      </p>
+      <p>
+       These Terms 
+of Use shall be governed by, construed and enforced in accordance with 
+the laws of the State of California, as it is applied to agreements 
+entered into and to be performed entirely within California and without 
+giving effect to any principles of conflict of laws. You agree that 
+any legal lawsuit or other action brought by Know Labs, you or any third 
+party to enforce these Terms of Use, or in connection with any matters 
+related to the Class Sites or Online Courses, shall be subject only 
+to the jurisdiction of the courts located in San Mateo County, California.  
+Know Labs makes no representations that the Class Sites operate (or are 
+legally permitted to operate) in all geographic areas, or that the Class 
+Sites, or information, services or products offered through the Class 
+Sites are appropriate or available for use in other locations.  
+Accessing the Class Sites from territories where the Class Sites, or 
+any content or functionality of the Class Sites or portions thereof, 
+including but not limited to functionality discussed in the Privacy 
+Policy, is illegal is expressly prohibited.  If you choose to access 
+the Class Sites, you agree and acknowledge that you do so on your own 
+initiative and at your own risk and that you are solely responsible 
+for compliance with all applicable laws.
+      </p>
+      <p>
+       If any provision 
+of these Terms of Use is found to be unlawful, void, or for any reason 
+unenforceable, then that provision shall be deemed severable from the 
+other provisions herein, and shall not affect the validity and enforceability 
+of any remaining provisions.  Know Labs shall have no liability under 
+these Terms of Use to the extent arising from any failure of Know Labs 
+to perform any of its obligations under these Terms of Use due to any 
+fire, flood, earthquakes, other acts of God, war, civil unrest, terrorism, 
+Internet failures, governmental act or court order, national emergency, 
+strikes or labor disputes or any other event not within Know Labs' 
+reasonable control.  Know Labs shall not be responsible for damage 
+or other problems caused by any unauthorized change to these Terms of 
+Use made by way of hacking or cracking this page.
+      </p>
+      <p>
+       Any delay or 
+failure on the part of Know Labs to enforce any rights under these Terms 
+of Use to which it may be entitled shall not, in any event, be construed 
+as a waiver of the right and privilege to do so at any subsequent time.
+      </p>
+      <p>
+       These Terms 
+of Use constitute the entire agreement between you and Know Labs relating 
+to the matters set forth herein, and shall not be modified except in 
+writing, as posted on the Class Sites by Know Labs or through a specific 
+writing between you and Know Labs.
+      </p>
+      <p>
+       Any notice which may be required 
+to be given to us under these Terms of Use may be sent to us by writing 
+or emailing to the following addresses:
+      </p>
+      <p align="center">
+       Know Labs, Inc.
+       <br />
+       2390 El Camino Real Suite 100
+       <br />
+       Palo Alto, CA 94306
+       <br />
+       Email: info@knowlabs.com
+      </p>
+      <p>
+       The section titles herein are 
+displayed for convenience only and have no legal effect.
+      </p>
+      <p>
+       These Terms 
+of Use were last updated on February 18, 2012.
+      </p>
+      <p>
+       &copy; 2012, Know Labs, Inc.  All rights reserved.
+      </p>
+     </div>
+     <!-- end legal -->
+    </div>
+   </div>
+   <div id="footer-pusher">
+   </div>
+  </div>
+  <div id="footer">
+   <!-- <div class="clear"></div> -->
+   <div id="bottom_bin">
+    <div class="width960">
+     <div id="social">
+      <p>
+       Follow Us
+      </p>
+      <a href="http://www.facebook.com/pages/Udacity/174179219354091?sk=wall" target="_blank">
+       <img src="/media/img/icon_facebook-10x19.png" width="10" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="http://twitter.com/udacity" target="_blank">
+       <img src="/media/img/icon_twitter-28x19.png" width="28" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="https://plus.google.com/116286004036789369492/posts" target="_blank">
+       <img src="/media/img/icon_gplus-18x19.png" width="18" height="19" border="0" alt="Facebook" />
+      </a>
+     </div>
+     <div id="copyright-notice">
+      <p>
+       &copy; 2012 Udacity, Inc.
+      </p>
+     </div>
+     <div id="bottom-menu">
+      <p>
+       <a href="/">
+        Home
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/udacity">
+        About
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/careers/">
+        Careers
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/contact">
+        Contact
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/legal/">
+        Legal
+       </a>
+      </p>
+     </div>
+     <div class="clear">
+     </div>
+    </div>
+   </div>
+   <!-- end bottom_bin -->
+   <!-- <div class="clear">&nbsp;</div> -->
+  </div>
+ </body>
+</html>

@@ -86,7 +86,6 @@ for website in web_list:
     for current_url in to_crawl :
         diff = ''
         if checkUrl(current_url) == 0 :
-            to_crawl.remove(current_url)
             continue
         error("Crawling [%s]" % current_url, 0)
         try :
@@ -172,6 +171,5 @@ for website in web_list:
                     graph[current_url] = [url]
         pages[current_url] = temp
         crawled.append(current_url)
-        to_crawl.remove(current_url)
 save_all()
 print_result()

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Udacity - Free Classes. Awesome Instructors. Inspiring Community.
+  </title>
+  <link rel="stylesheet" type="text/css" href="/media/css/udacity.css?16" />
+  <script src="//www.google.com/jsapi?key=ABQIAAAAOx-pTXyuaUsotjKevTem5RRY-J96ZG6vUeHysYWcYheHIRtZ7hQ7CQ5yRTKcwjX2z4sBOrajFOZMkA">
+  </script>
+  <script type="text/javascript">
+   if (!window.console) {
+       window.console = {
+          log : function(){},
+          debug : function(){},
+          info : function(){},
+          warn : function(){}
+       }
+    }
+    google.load("jquery", "1.7.1", {uncompressed:true});
+    google.load("jqueryui", "1.8.16");
+  </script>
+  <!--script src="http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js"></script -->
+  <script src="/media/js/jquery.form.js">
+  </script>
+  <script src="/media/js/jquery.history.js">
+  </script>
+  <script src="/media/js/json2.js">
+  </script>
+  <script src="/media/js/udacity.js?16">
+  </script>
+  <script src="/media/js/pages.js?16">
+  </script>
+  <script type="text/javascript">
+   csrf_token = "RXnSV796ASx2Rai2bz6nw2m3VQDFQJ8qHzN7MzMvbW2mrkDqVCfRtbVrANXH"
+  </script>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28524234-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+$(document).ready(function() {
+    // use js to position botbar at either end of document or bottom of window, whichever is lower
+    var windowHeight = $(window).height();   // returns height of browser viewport
+    var contentHeight = $("body").height(); // returns height of HTML document
+    var footerHeight = $("div#bottom_bin").height();
+    var footerTop = windowHeight - footerHeight - 50;
+    if (windowHeight > contentHeight) {
+        //$("div#bottom_bin").css("top",footerTop);
+    }
+    //alert('window: '+windowHeight+' content: '+contentHeight+' footer: '+footerHeight+' top: '+footerTop);
+});
+  </script>
+  <link rel="stylesheet" type="text/css" href="/media/css/jquery-tabs.css" />
+ </head>
+ <body>
+  <div id="not-footer">
+   <div id="top_bin">
+    <div id="top_content" class="width960">
+     <!-- logo -->
+     <div class="udacity float-left">
+      <a href="/">
+       <img src="/media/img/udacity-beta-sm-293x28.png" width="293" height="28" alt="Udacity" />
+      </a>
+     </div>
+     <!-- buttons -->
+     <div class="user-block">
+      <!-- SIGN IN BUTTON & OVERLAY -->
+      <div id="user-button" rel="user-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN IN
+       </span>
+      </div>
+      <div id="user-overlay" class="overlay">
+       <form id="signin-form" method="post">
+        <p>
+         <label for="email-field" class="login-label">
+          Email
+         </label>
+        </p>
+        <input class="login-field" type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field" class="login-label">
+          Password
+         </label>
+        </p>
+        <input class="login-field" type="password" name="password" required="required" />
+        <p>
+         <a href="" class="modal-input" id="forgot-password" rel="#forgot-password-overlay">
+          Forgot your password?
+         </a>
+        </p>
+        <br />
+        <!-- TODO make a display block in css? -->
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- SIGN UP BUTTON & OVERLAY -->
+      <div id="signup-button" rel="signup-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN UP
+       </span>
+      </div>
+      <div id="signup-overlay" class="overlay">
+       <form id="signup-form" action="/" method="post">
+        <p>
+         <label for="name-field">
+          Name
+         </label>
+        </p>
+        <input type="text" name="name" required="required" />
+        <p>
+         <label for="email-field">
+          Email
+         </label>
+        </p>
+        <input type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field">
+          Choose a password
+         </label>
+        </p>
+        <input type="password" name="password" required="required" />
+        <p>
+         <label for="tos-field">
+          I accept the
+          <a href="/legal/" target="_blank">
+           TOS
+          </a>
+         </label>
+         <input type="checkbox" name="tos" required="required" />
+        </p>
+        <br />
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- CLASS LIST BUTTON & OVERLAY -->
+      <div id="courses-button" rel="courses-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        CLASS LIST
+       </span>
+      </div>
+      <div id="courses-overlay" class="overlay">
+       <!-- TODO eventually load course list from database -->
+       <p>
+        <a href="/overview/Course/cs101">
+         CS 101: Building a Search Engine
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/overview/Course/cs373">
+         CS 373: Programming a Robotic Car
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/" class="arrow">
+         SEE ALL UPCOMING CLASSES
+        </a>
+       </p>
+      </div>
+     </div>
+     <!-- end user-block -->
+     <div class="header-title">
+      <h2>
+      </h2>
+     </div>
+     <div class="header-text clear">
+      <h2>
+       Web Application Engineering
+      </h2>
+      <p>
+       Learn about engineering web applications with Steve Huffman! By the end of the class, you will have built your own blog to share with the world.
+      </p>
+     </div>
+     <!-- header nav function starts here -->
+     <div id="header-nav clear">
+      <ul class="topnav">
+       <li class="topnav selected">
+        <a href="">
+         Overview
+        </a>
+       </li>
+       <li class="inactive">
+        <span>
+         Course Content
+        </span>
+       </li>
+       <li class="inactive">
+        <span>
+         Discussion
+        </span>
+       </li>
+       <li class="inactive">
+        <span>
+         Announcements
+        </span>
+       </li>
+       <li class="inactive">
+        <span>
+         Progress
+        </span>
+       </li>
+      </ul>
+      <div class="clear">
+      </div>
+     </div>
+     <!-- end header-nav -->
+     <!-- header nav function ends here -->
+    </div>
+    <!-- end top_content -->
+    <div class="clear">
+    </div>
+    <div style="padding: 10px; text-align: center; color: black; background-color: #d26a33; font-size: 1.2em;" id="javascript_warning">
+     <img src="/media/img/alert.gif" style="vertical-align: middle;" />
+     <span>
+      This website requires JavaScript to be
+ 	enabled. Please make sure JavaScript is enabled in your web browser
+ 	preferences and any JavaScript blockers are disabled for this site.
+     </span>
+    </div>
+   </div>
+   <!-- end top_bin -->
+   <script type="text/javascript">
+    $("#javascript_warning").css("display", "none");
+   </script>
+   <div class="modal small" id="forgot-password-overlay">
+    <div class="close">
+    </div>
+    <h1>
+     FORGOT YOUR PASSWORD?
+    </h1>
+    <p>
+     Please enter the e-mail address you used to enroll in a Udacity class and we will send you a link to reset your password.
+    </p>
+    <form id="forgot-password-form">
+     <div class="error">
+     </div>
+     <p>
+      <label for="email-field">
+       Email
+      </label>
+     </p>
+     <input id="name-field" type="email" name="email" required="required" />
+     <button class="button" type="submit">
+      SUBMIT ADDRESS
+     </button>
+    </form>
+   </div>
+   <div id="content-background">
+    <div id="content" class="width960">
+     <div id="course-container">
+      <div class="splash-video">
+       <div id="teaser-video">
+       </div>
+      </div>
+      <script type="text/javascript">
+       google.load("swfobject", "2.2");
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/player_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		
+		function onYouTubePlayerAPIReady() {
+			teaserPlayer = new YT.Player('teaser-video', {
+				height: '400',
+				width: '710',
+				videoId: 'CRYn30--PPk',
+				playerVars: {'wmode': 'opaque', 'autohide': '1', 'fs': 1, 'rel': 0},
+				events: {
+				}
+			});
+		}
+      </script>
+      <div class="enroll">
+       <h1>
+        ENROLL
+       </h1>
+       <hr />
+       <p>
+        This course will begin on 16 April 2012.
+			  Ready to sign up?
+       </p>
+       <form id="enroll-form" action="" method="post">
+        <p>
+         <label for="name-field">
+          Name:
+         </label>
+        </p>
+        <input type="text" name="name" required="required" />
+        <p>
+         <label for="email-field">
+          Email:
+         </label>
+        </p>
+        <input type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field">
+          Choose a password:
+         </label>
+        </p>
+        <input type="password" name="password" required="required" />
+        <p>
+         <label for="tos-field">
+          I accept the
+          <a href="/legal/" target="_blank">
+           TOS
+          </a>
+          :
+         </label>
+         <input type="checkbox" name="tos" required="required" />
+        </p>
+        <input type="hidden" name="course_rev" value="agpzfnVkYWNpdHl1cicLEgZDb3Vyc2UiBWNzMjUzDAsSCUNvdXJzZVJldiIHYXByMjAxMgw" />
+        <button class="button" type="submit">
+         ENROLL
+        </button>
+       </form>
+      </div>
+     </div>
+     <!-- end course-container -->
+     <!-- tabbed content -->
+     <div id="tabs">
+      <ul>
+       <li>
+        <a href="#tab-instructors">
+         Instructors
+        </a>
+       </li>
+       <li>
+        <a href="#tab-syllabus">
+         Syllabus
+        </a>
+       </li>
+       <li>
+        <a href="#tab-prerequisites">
+         Prerequisites
+        </a>
+       </li>
+       <li>
+        <a href="#tab-classfaq">
+         Class FAQ
+        </a>
+       </li>
+      </ul>
+      <div id="tab-instructors">
+       <div style="float: left; width: 45%; margin-right: 30px;">
+        <img src="/image/headshot/Instructor/881019" width="300px" height="200px" />
+        <p>
+         <b class="sans">
+          STEVE HUFFMAN
+         </b>
+        </p>
+        <hr />
+        <p>
+         Steve Huffman co-founded the social news site
+         <a href="href">
+          reddit.com
+         </a>
+         in 2005 with his college roommate. reddit.com has since grown into one of the largest communities online. In 2010, he co-founded
+         <a href="href">
+          Hipmunk
+         </a>
+         , a company
+to take the agony out of searching for plane and hotel tickets. Steve was named to Inc. Magazine's 30 under 30 list in 2011. He studied Computer Science at the University of Virginia.
+        </p>
+       </div>
+       <div class="clear">
+       </div>
+      </div>
+      <!-- end tab-instructors -->
+      <div id="tab-syllabus">
+       <h1>
+        Web Application Engineering
+       </h1>
+       <hr />
+       <p>
+        <b>
+         Description
+        </b>
+        :  Web applications have the power to provide useful services to millions of 
+	people worldwide.  In this class, you will learn how to build your own blog application 
+	starting from the basics of how the web works and how to set up a web application and 
+	process user input, to how to use databases, manage user accounts, interact with other 
+	web services, and make your application scale to support large numbers of users.
+       </p>
+       <p class="syllabus-week">
+        WEEK 1:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         How the Web Works
+        </b>
+        <br />
+        Introduction to HTTP and Web Applications
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 2:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         How to Have Users
+        </b>
+        <br />
+        Getting and processing user input
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 3:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         How to Manage State
+        </b>
+        <br />
+        Databases and persistent data
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 4:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Whom to Trust
+        </b>
+        <br />
+        User authentication and access control
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 5:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         How to Connect
+        </b>
+        <br />
+        Web applications as services, using APIs
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 6:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         How to Serve Millions
+        </b>
+        <br />
+        Scaling, caching, optimizations
+       </p>
+       <br class="clear" />
+       <p class="syllabus-week">
+        WEEK 7:
+       </p>
+       <p class="syllabus-desc">
+        <b>
+         Changing the World
+        </b>
+        <br />
+        Building a successful web application, project
+       </p>
+      </div>
+      <!-- end tab-syllabus -->
+      <div id="tab-prerequisites">
+       <h1>
+        PREREQUISITES
+       </h1>
+       <hr />
+       <p>
+        <b class="sans">
+         PREREQUISITES
+        </b>
+       </p>
+       <p>
+        This course assumes previous programming experience, comparable to what is covered by the Udacity CS101 course.
+       </p>
+      </div>
+      <!-- end tab-prerequisites -->
+      <div id="tab-classfaq">
+       <h1>
+        QUESTIONS
+       </h1>
+       <hr />
+       <p>
+        <b>
+         Is there a fee to take the course?
+        </b>
+        <br />
+        Nope, no fees. All of our classes are offered free of charge.
+       </p>
+       <p>
+        <b>
+         Can you enroll in more than one class?
+        </b>
+        <br />
+        Yes! Keep in mind CS101 is intended for students with no previous programming background, CS212, 253 and 262 are courses are oriented towards students with some programming experience (the equivalent of CS101), while CS373 and CS387 assumes students have prior programming experience.
+       </p>
+       <p>
+        <b>
+         When do classes start?
+        </b>
+        <br />
+        April 16, 2012.
+       </p>
+       <p>
+        <b>
+         When do I have to be online to watch the lectures?
+        </b>
+        <br />
+        The lectures are posted each week for you to view at your convenience.
+       </p>
+       <p>
+        <b>
+         How is the class formatted?
+        </b>
+        <br />
+        Both classes are broken into 6 week-long units and seventh week that wraps up the course and has a final exam. Each unit contains multiple lecture segments with interactive quizzes built in.  There will be one homework assignment which will include programming problems each week. There will be approximately 50 minutes of lecture videos.
+       </p>
+       <p>
+        <b>
+         Will there be closed captioning?
+        </b>
+        <br />
+        Yes, the videos will have captions in English.  We're also working to support other languages in future.
+       </p>
+       <p>
+        <b>
+         What will I get for completing the classes?
+        </b>
+        <br />
+        Students who complete a course will also receive a certificate signed by the instructors.
+       </p>
+      </div>
+      <!-- end tab-classfaq -->
+     </div>
+     <!-- end tabs -->
+     <!-- end tabbed content -->
+     <div style="clear: both">
+     </div>
+     <script src="/media/js/jquery.tools.min.js">
+     </script>
+     <script type="text/javascript">
+      $(document).ready(function() {
+	$("#tabs").tabs();
+});
+     </script>
+    </div>
+   </div>
+   <div id="footer-pusher">
+   </div>
+  </div>
+  <div id="footer">
+   <!-- <div class="clear"></div> -->
+   <div id="bottom_bin">
+    <div class="width960">
+     <div id="social">
+      <p>
+       Follow Us
+      </p>
+      <a href="http://www.facebook.com/pages/Udacity/174179219354091?sk=wall" target="_blank">
+       <img src="/media/img/icon_facebook-10x19.png" width="10" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="http://twitter.com/udacity" target="_blank">
+       <img src="/media/img/icon_twitter-28x19.png" width="28" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="https://plus.google.com/116286004036789369492/posts" target="_blank">
+       <img src="/media/img/icon_gplus-18x19.png" width="18" height="19" border="0" alt="Facebook" />
+      </a>
+     </div>
+     <div id="copyright-notice">
+      <p>
+       &copy; 2012 Udacity, Inc.
+      </p>
+     </div>
+     <div id="bottom-menu">
+      <p>
+       <a href="/">
+        Home
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/udacity">
+        About
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/careers/">
+        Careers
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/contact">
+        Contact
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/legal/">
+        Legal
+       </a>
+      </p>
+     </div>
+     <div class="clear">
+     </div>
+    </div>
+   </div>
+   <!-- end bottom_bin -->
+   <!-- <div class="clear">&nbsp;</div> -->
+  </div>
+ </body>
+</html>

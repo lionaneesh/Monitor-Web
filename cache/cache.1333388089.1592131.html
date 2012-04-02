@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Udacity - Free Classes. Awesome Instructors. Inspiring Community.
+  </title>
+  <link rel="stylesheet" type="text/css" href="/media/css/udacity.css?16" />
+  <script src="//www.google.com/jsapi?key=ABQIAAAAOx-pTXyuaUsotjKevTem5RRY-J96ZG6vUeHysYWcYheHIRtZ7hQ7CQ5yRTKcwjX2z4sBOrajFOZMkA">
+  </script>
+  <script type="text/javascript">
+   if (!window.console) {
+       window.console = {
+          log : function(){},
+          debug : function(){},
+          info : function(){},
+          warn : function(){}
+       }
+    }
+    google.load("jquery", "1.7.1", {uncompressed:true});
+    google.load("jqueryui", "1.8.16");
+  </script>
+  <!--script src="http://cdn.jquerytools.org/1.2.6/full/jquery.tools.min.js"></script -->
+  <script src="/media/js/jquery.form.js">
+  </script>
+  <script src="/media/js/jquery.history.js">
+  </script>
+  <script src="/media/js/json2.js">
+  </script>
+  <script src="/media/js/udacity.js?16">
+  </script>
+  <script src="/media/js/pages.js?16">
+  </script>
+  <script type="text/javascript">
+   csrf_token = "Wtnw7TeqrepChsYPWxWTdYabic6eCjvWPwQSaZ6nmMm6qZgBTkvF7RekkLpM"
+  </script>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28524234-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+$(document).ready(function() {
+    // use js to position botbar at either end of document or bottom of window, whichever is lower
+    var windowHeight = $(window).height();   // returns height of browser viewport
+    var contentHeight = $("body").height(); // returns height of HTML document
+    var footerHeight = $("div#bottom_bin").height();
+    var footerTop = windowHeight - footerHeight - 50;
+    if (windowHeight > contentHeight) {
+        //$("div#bottom_bin").css("top",footerTop);
+    }
+    //alert('window: '+windowHeight+' content: '+contentHeight+' footer: '+footerHeight+' top: '+footerTop);
+});
+  </script>
+ </head>
+ <body>
+  <div id="not-footer">
+   <div id="top_bin">
+    <div id="top_content" class="width960">
+     <!-- logo -->
+     <div class="udacity float-left">
+      <a href="/">
+       <img src="/media/img/udacity-beta-sm-293x28.png" width="293" height="28" alt="Udacity" />
+      </a>
+     </div>
+     <!-- buttons -->
+     <div class="user-block">
+      <!-- SIGN IN BUTTON & OVERLAY -->
+      <div id="user-button" rel="user-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN IN
+       </span>
+      </div>
+      <div id="user-overlay" class="overlay">
+       <form id="signin-form" method="post">
+        <p>
+         <label for="email-field" class="login-label">
+          Email
+         </label>
+        </p>
+        <input class="login-field" type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field" class="login-label">
+          Password
+         </label>
+        </p>
+        <input class="login-field" type="password" name="password" required="required" />
+        <p>
+         <a href="" class="modal-input" id="forgot-password" rel="#forgot-password-overlay">
+          Forgot your password?
+         </a>
+        </p>
+        <br />
+        <!-- TODO make a display block in css? -->
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- SIGN UP BUTTON & OVERLAY -->
+      <div id="signup-button" rel="signup-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        SIGN UP
+       </span>
+      </div>
+      <div id="signup-overlay" class="overlay">
+       <form id="signup-form" action="/" method="post">
+        <p>
+         <label for="name-field">
+          Name
+         </label>
+        </p>
+        <input type="text" name="name" required="required" />
+        <p>
+         <label for="email-field">
+          Email
+         </label>
+        </p>
+        <input type="email" name="email" required="required" />
+        <p>
+         <label for="pwd-field">
+          Choose a password
+         </label>
+        </p>
+        <input type="password" name="password" required="required" />
+        <p>
+         <label for="tos-field">
+          I accept the
+          <a href="/legal/" target="_blank">
+           TOS
+          </a>
+         </label>
+         <input type="checkbox" name="tos" required="required" />
+        </p>
+        <br />
+        <button class="button" type="submit">
+         <span>
+          GO
+         </span>
+        </button>
+       </form>
+      </div>
+      <!-- CLASS LIST BUTTON & OVERLAY -->
+      <div id="courses-button" rel="courses-overlay" class="button topbar-modal-button float-right">
+       <span class="expandable">
+        CLASS LIST
+       </span>
+      </div>
+      <div id="courses-overlay" class="overlay">
+       <!-- TODO eventually load course list from database -->
+       <p>
+        <a href="/overview/Course/cs101">
+         CS 101: Building a Search Engine
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/overview/Course/cs373">
+         CS 373: Programming a Robotic Car
+        </a>
+       </p>
+       <hr />
+       <p>
+        <a href="/" class="arrow">
+         SEE ALL UPCOMING CLASSES
+        </a>
+       </p>
+      </div>
+     </div>
+     <!-- end user-block -->
+     <div class="header-title">
+      <h2>
+      </h2>
+     </div>
+     <div class="header-text clear">
+      <p>
+       We believe university-level education can be both high quality and low cost. 
+Using the economics of the Internet, we've connected some of the greatest 
+teachers to hundreds of thousands of students all over the world.
+      </p>
+     </div>
+     <!-- header nav function starts here -->
+     <!-- header nav function ends here -->
+    </div>
+    <!-- end top_content -->
+    <div class="clear">
+    </div>
+    <div style="padding: 10px; text-align: center; color: black; background-color: #d26a33; font-size: 1.2em;" id="javascript_warning">
+     <img src="/media/img/alert.gif" style="vertical-align: middle;" />
+     <span>
+      This website requires JavaScript to be
+ 	enabled. Please make sure JavaScript is enabled in your web browser
+ 	preferences and any JavaScript blockers are disabled for this site.
+     </span>
+    </div>
+   </div>
+   <!-- end top_bin -->
+   <script type="text/javascript">
+    $("#javascript_warning").css("display", "none");
+   </script>
+   <div class="modal small" id="forgot-password-overlay">
+    <div class="close">
+    </div>
+    <h1>
+     FORGOT YOUR PASSWORD?
+    </h1>
+    <p>
+     Please enter the e-mail address you used to enroll in a Udacity class and we will send you a link to reset your password.
+    </p>
+    <form id="forgot-password-form">
+     <div class="error">
+     </div>
+     <p>
+      <label for="email-field">
+       Email
+      </label>
+     </p>
+     <input id="name-field" type="email" name="email" required="required" />
+     <button class="button" type="submit">
+      SUBMIT ADDRESS
+     </button>
+    </form>
+   </div>
+   <div id="content-background">
+    <div id="content" class="width960">
+     <div id="blocks">
+      <a class="prev browse left">
+      </a>
+      <div id="home_scrollable" class="scrollable">
+       <div class="items">
+        <div class="scrollitem">
+         <div class="infoblock">
+          <div class="info-icon icon-our-story">
+          </div>
+          <h1>
+           OUR STORY
+          </h1>
+          <p>
+           Udacity was founded by three roboticists who believed 
+					much of the educational value of their university classes 
+					could be offered online. A few weeks later, over 160,000 
+					students in more than 190 countries enrolled in our first 
+					class, "Introduction to Artificial Intelligence." ...
+          </p>
+          <div class="block-center">
+           <a class="button  block-recenter" href="/us">
+            MEET THE TEAM
+           </a>
+          </div>
+         </div>
+         <div class="infoblock">
+          <div class="info-icon icon-news">
+          </div>
+          <h1>
+           PRESS
+          </h1>
+          <div id="press_scrollable" class="scrollable">
+           <div class="items">
+            <div class="scrollitem">
+             <div class="newsitem">
+              <a href="http://www.nytimes.com/2011/08/16/science/16stanford.html" target="_blank">
+               <img src="/media/img/new-york-times-235x175.png" alt="New York Times clipping" />
+              </a>
+             </div>
+            </div>
+            <div class="scrollitem">
+             <div class="newsitem">
+              <a href="http://news.yahoo.com/blogs/lookout/more-20k-students-signed-free-stanford-artificial-intelligence-180749273.html" target="_blank">
+               <img src="/media/img/yahoo-235x175.gif" alt="Yahoo! News clipping" />
+              </a>
+             </div>
+            </div>
+            <div class="scrollitem">
+             <div class="newsitem">
+              <a href="http://chronicle.com/blogs/wiredcampus/stanford-u-offers-free-online-course-in-artificial-intelligence" target="_blank">
+               <img src="/media/img/the-chronicle-235x175.gif" alt="Chronicle clipping" />
+              </a>
+             </div>
+            </div>
+            <div class="scrollitem">
+             <div class="newsitem">
+              <a href="http://www.engadget.com/2011/08/05/stanford-schooling-unwashed-masses-with-free-online-intro-to-art/" target="_blank">
+               <img src="/media/img/engadget-235x175.gif" alt="Engadget clipping" />
+              </a>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="block-center">
+           <div class="navi block-recenter">
+           </div>
+          </div>
+         </div>
+         <div class="infoblock">
+          <div class="info-icon icon-contact">
+          </div>
+          <h1>
+           I'M INTERESTED
+          </h1>
+          <p>
+           Leave us your name and e-mail address and we will be sure to keep you updated.  We will
+           <em>
+            not
+           </em>
+           share your e-mail with anyone else.
+           <form id="interested" action="/udacity" method="post">
+            <p>
+             <label for="name-field">
+              Name
+             </label>
+             <input id="name-field" type="text" name="name" required="required" />
+            </p>
+            <p>
+             <label for="email-field">
+              Email
+             </label>
+             <input id="email-field" type="email" name="email" required="required" />
+            </p>
+            <div class="block-center">
+             <button class="button block-recenter" type="submit">
+              SUBMIT
+             </button>
+            </div>
+           </form>
+          </p>
+         </div>
+        </div>
+        <div class="scrollitem">
+         <div class="infoblock testimonial">
+          <div class="info-icon icon-heart">
+          </div>
+          <h1>
+           PEDRO
+          </h1>
+          <p>
+           "I had never participated in an online course before, and without any doubt I can say now that this experience is simply amazing...anyone, anywhere, from any culture of the world, with any academic background can participate in this course... the only thing they need is an internet connection."
+          </p>
+         </div>
+         <div class="infoblock testimonial">
+          <div class="info-icon icon-heart">
+          </div>
+          <h1>
+           YASIR
+          </h1>
+          <p>
+           "I live on a 100 acre farm in the Aussie Bush, and while I love living here, I don't meet other programmers often, let alone anyone working at the frontiers of research...for the last few weeks watching the lectures and doing the assignments has been the highlight of my week. Thank you!"
+          </p>
+         </div>
+         <div class="infoblock testimonial">
+          <div class="info-icon icon-heart">
+          </div>
+          <h1>
+           JOSEMARIA
+          </h1>
+          <p>
+           "Thank you very much for having offered this course, it is the most challenging and invigorating course I have ever taken and it has truly sparked an interest in learning that I feel will follow me through my life...the pride I experienced once I realized that I understood a topic can not be replicated..."
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <a class="next browse right">
+      </a>
+      <div class="clear">
+      </div>
+     </div>
+     <div class="clear">
+     </div>
+     <br />
+     <br />
+     <h1>
+      COME JOIN US - WE ARE HIRING
+     </h1>
+     <hr />
+     <p>
+      We need your help to make great education available to more people!  We're looking for the very best people to join our team.
+     </p>
+     <p>
+      <a class="arrow" href="/careers/">
+       SEE ALL OF OUR OPENINGS
+      </a>
+     </p>
+     <br />
+     <br />
+     <br />
+    </div>
+   </div>
+   <div id="footer-pusher">
+   </div>
+  </div>
+  <div id="footer">
+   <!-- <div class="clear"></div> -->
+   <div id="bottom_bin">
+    <div class="width960">
+     <div id="social">
+      <p>
+       Follow Us
+      </p>
+      <a href="http://www.facebook.com/pages/Udacity/174179219354091?sk=wall" target="_blank">
+       <img src="/media/img/icon_facebook-10x19.png" width="10" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="http://twitter.com/udacity" target="_blank">
+       <img src="/media/img/icon_twitter-28x19.png" width="28" height="19" border="0" alt="Facebook" />
+      </a>
+      <a href="https://plus.google.com/116286004036789369492/posts" target="_blank">
+       <img src="/media/img/icon_gplus-18x19.png" width="18" height="19" border="0" alt="Facebook" />
+      </a>
+     </div>
+     <div id="copyright-notice">
+      <p>
+       &copy; 2012 Udacity, Inc.
+      </p>
+     </div>
+     <div id="bottom-menu">
+      <p>
+       <a href="/">
+        Home
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/udacity">
+        About
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/careers/">
+        Careers
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/contact">
+        Contact
+       </a>
+       &nbsp; &middot; &nbsp;
+       <a href="/legal/">
+        Legal
+       </a>
+      </p>
+     </div>
+     <div class="clear">
+     </div>
+    </div>
+   </div>
+   <!-- end bottom_bin -->
+   <!-- <div class="clear">&nbsp;</div> -->
+  </div>
+ </body>
+</html>
