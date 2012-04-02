@@ -1,19 +1,20 @@
 #!/bin/python
 # Copyright (c) 2012-2013 Aneesh Dogra <lionaneesh@gmail.com>
 
+# Third Party Modules
 from BeautifulSoup import BeautifulSoup
-import HTMLParser
-import optparse
+
+# Standard Modules
 import urllib2
 import sys
 import os
 from urlparse import urljoin # to support relative urls
 import re                    # url checking
 import signal                # for handling KeyboardInterrupts
+
+# My modules
 from crawler_config import * # for handling Cralwer configurations
 from errors import *
-import datetime
-import difflib
 from crawler_db_handling import *
 from time import time
 
@@ -35,10 +36,10 @@ def checkUrl(url) :
 
 def handle_SIGINT(signal, frame) :
     save_all()
-    print_summary()
+    print_result()
     error("Ctrl + C, Detected!\nExiting Now!", 3)
 
-def print_summary():
+def print_result():
     for changes in web_diff:
         try:
             print_diff(changes + web_diff[changes])
@@ -173,4 +174,4 @@ for website in web_list:
         crawled.append(current_url)
         to_crawl.remove(current_url)
 save_all()
-print_summary()
+print_result()
