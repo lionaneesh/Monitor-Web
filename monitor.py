@@ -58,7 +58,8 @@ def save_all():
 
 web_list = read_config()
 
-# connect to sqlite database  
+# connect to sqlite database 
+directory = os.getcwd() + '/cache'
 data     = []
 crawled  = []
 tracked_pages = []
@@ -68,13 +69,16 @@ graph    = {}
 content  = ''
 pages    = {}
 web_diff = {}
-prefixes = ('http://', 'https://') # prefixes to check whether the link is an absolute link
+prefixes = ('http://', 'https://', 'ftp://') # prefixes to check whether the link is an absolute link
 c, con = db_connect()
 db_setup_everything(c, con)
-# db_get_data(crawled, to_crawl, pages, c)
 db_get_data(pages, c)
-if len(sys.argv) == 2:
-    error("No directory Provided, Using %s as default" % os.getcwd(), 1)
+
+try:
+    os.stat(directory)
+except:
+    os.makedirs(directory)
+
 #---- main -----
 signal.signal(signal.SIGINT, handle_SIGINT)
 
@@ -104,7 +108,7 @@ for website in web_list:
         soup        = BeautifulSoup(source)
         content     = soup.prettify()
         minus = 0
-        add = 0
+        add   = 0
         if current_url in tracked_pages:
             # See if there is any difference in the page
             len_diff = 0            
@@ -144,7 +148,7 @@ for website in web_list:
                 diff += "+ %s\n" % (a,)
                 add = add + 1
             web_diff[current_url] = '\nNew Page Added\n%d Additions, %d Deletions\n' % (add, minus) + diff
-        temp = os.getcwd() + "/cache/cache.%.7f.html" % time()
+        temp = directory + "/cache.%.7f.html" % time()
         fp   = open(temp, 'w')
         fp.write(content)
         fp.close()
