@@ -14,20 +14,6 @@ class bcolors:
         self.WARNING = ''
         self.FAIL = ''
         self.ENDC = ''
-
-#-- Print diff --
-def print_diff(msg):
-    out = ''
-    for m in msg.split('\n'):
-        if m.startswith(('http://', 'https://',)):
-            out += bcolors.OKBLUE + m + bcolors.ENDC + '\n'
-        elif m.startswith('+'):
-            out += bcolors.OKGREEN + m + bcolors.ENDC + '\n'
-        elif m.startswith('-'):
-            out += bcolors.FAIL + m + bcolors.ENDC + '\n'
-        else:
-            out += m + '\n'
-    sys.stderr.write(out)
 #-- Error --
 def log(msg):
     print bcolors.OKGREEN + 'log: ' + msg + bcolors.ENDC

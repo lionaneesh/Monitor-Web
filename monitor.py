@@ -42,11 +42,7 @@ def handle_SIGINT(signal, frame) :
 
 def print_result():
     for changes in web_diff:
-        try:
-            print_diff(changes + web_diff[changes])
-        except UnicodeDecodeError:
-            sys.stderr.write('UnicodeError: ' + bcolors.OKBLUE + changes + bcolors.ENDC)
-
+        sys.stderr.write('\n' + changes + web_diff[changes])
 def save_all():
     for i in pages:
             c.execute("SELECT * from cache where url=\'%s\'" % (i,))
@@ -122,7 +118,7 @@ for website in web_list:
             web_diff[current_url] = '\n' + diff
             os.remove(pages[current_url])
         else: # new page added
-            web_diff[current_url] = '\nNew Page Added\n'
+            web_diff[current_url] = ' -- New Page Added\n'
         temp = directory + "/cache.%.7f.html" % time()
         fp   = open(temp, 'w')
         fp.write(content)
