@@ -21,6 +21,18 @@ Install BeautifulSoup.
 Download or Clone the repository.
 and run sync.py
 
+Politeness
+==========
+
+Crawling a webpage repetitively can cause bandwith loss to the target site. It is recomended to sync data, atleast after a 15 minute interval.
+
+Output
+======
+
+Monitor-Web outputs the diffs to stderr, which ofcourse can be redirected to desired file. In UNIX it can be done in the following way :-
+
+./sync.py 2> output.diff
+
 Author
 ======
 
