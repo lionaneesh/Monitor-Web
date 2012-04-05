@@ -19,7 +19,7 @@ To start Monitor-Web :-
 
 Install BeautifulSoup.
 Download or Clone the repository.
-and run monitor.py
+and run sync.py
 
 Author
 ======
