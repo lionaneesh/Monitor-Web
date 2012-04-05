@@ -11,6 +11,7 @@ import os
 from urlparse import urljoin # to support relative urls
 import re                    # url checking
 import signal                # for handling KeyboardInterrupts
+import difflib               # for cumputing differences between files
 
 # My modules
 from crawler_config import * # for handling Cralwer configurations
@@ -88,7 +89,6 @@ for entry in pages:
 for website in web_list:
     to_crawl.append(website.strip())
     for current_url in to_crawl :
-        diff = ''
         if checkUrl(current_url) == 0 :
             continue
         error("Crawling [%s]" % current_url, 0)
@@ -107,47 +107,24 @@ for website in web_list:
         source      = html_page.read()
         soup        = BeautifulSoup(source)
         content     = soup.prettify()
-        minus = 0
-        add   = 0
+        diff  = ''
         if current_url in tracked_pages:
             # See if there is any difference in the page
             len_diff = 0            
-            cmp1 = content.split('\n')
-            cmp1.pop() # @HACK
+            text1 = content.split('\n')
+            text1.pop() # remove last newline
             tp   = open(pages[current_url])
-            cmp2 = tp.readlines()
-            length = len(cmp1)
-            if len(cmp2) < length:
-                length = len(cmp2)
-                len_diff = 2 # 2 means cmp2 < cmp1
-            for i in range(0, length):
-                if cmp1[i].strip('\n') != cmp2[i].strip('\n'):
-                    for ref in cmp2[i-4:i]:
-                        diff += " %s\n" % (ref,)
-                    diff += "- %s\n+ %s\n" % (cmp1[i].strip('\n'), cmp2[i].strip('\n'),)
-                    add = add + 1
-                    minus = minus + 1
-                    for ref2 in cmp2[i+1:i+4]:
-                        diff += " %s\n" % (ref2,)            
-            if len_diff > 0:
-                if len_diff == 1:
-                    if extra in cmp2[length:]:
-                        diff += "- %s\n" % (extra.strip('\n'),)
-                        minus = minus + 1
-                else:
-                    if extra in cmp1[length:]:
-                        diff += "+ %s\n" % (extra.strip('\n'),)
-                        add = add + 1
+            text2 = tp.read().splitlines()
+            # remove newlines
+            diff_generator = difflib.unified_diff(text1, text2)
+            for differences in diff_generator:
+                diff += differences + '\n'
             if diff == '': # no difference == No point of creating another cache file
                 continue
-            web_diff[current_url] = '\n%d Additions, %d Deletions\n- previous\n+ present\n' % (add, minus,) + diff
+            web_diff[current_url] = '\n' + diff
             os.remove(pages[current_url])
         else: # new page added
-            content_list = content.split('\n')
-            for a in content_list:
-                diff += "+ %s\n" % (a,)
-                add = add + 1
-            web_diff[current_url] = '\nNew Page Added\n%d Additions, %d Deletions\n' % (add, minus) + diff
+            web_diff[current_url] = '\nNew Page Added\n'
         temp = directory + "/cache.%.7f.html" % time()
         fp   = open(temp, 'w')
         fp.write(content)
