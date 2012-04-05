@@ -19,11 +19,7 @@ def create_config(config='website-list.txt') :
     for i in default_config_list:
         fp.write(i + '\n')
         
-def read_config(config="website-list.txt", dr=None) :
-    cwd = os.getcwd()    
-    if dr == None:
-        dr = cwd
-        error('No directory specified. Using %s as default.' % dr, 1)
+def read_config(config="website-list.txt", dr=os.getcwd()) :
     try:
         fp = open(dr + '/' + config, 'r')
         comment_prefixes = ('#', '//')
