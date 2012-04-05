@@ -29,7 +29,7 @@ Crawling a webpage repetitively can cause bandwith loss to the target site. It i
 Output
 ======
 
-Monitor-Web outputs the diffs to stderr, which ofcourse can be redirected to desired file. In UNIX it can be done in the following way :-
+Monitor-Web outputs the diffs to stderr, which ofcourse can be redirected to the desired file. In UNIX it can be done in the following way :-
 
 ./sync.py 2> output.diff
 
