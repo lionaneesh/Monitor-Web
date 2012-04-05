@@ -1,6 +1,6 @@
 import sqlite3 as lite
 from os import getcwd
-from errors import *
+from crawler_log import *
 DB_NAME = 'web_monitor.db'
 
 def db_connect():
@@ -12,13 +12,14 @@ def db_setup_everything(c, con):
     try:
         c.execute('SELECT * from cache')
     except lite.OperationalError:
-        error("Creating cache", 2)        
+        log("Creating cache")        
         c.execute("CREATE TABLE cache(url text, content text)")
     con.commit()
 
 def db_get_data(pages, c):
     c.execute('SELECT * from cache')
-
+    log("Loading cache")        
+    
     #build up the lists
     while 1:
         try:    

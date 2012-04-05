@@ -15,7 +15,7 @@ import difflib               # for cumputing differences between files
 
 # My modules
 from crawler_config import * # for handling Cralwer configurations
-from errors import *
+from crawler_log import *
 from crawler_db_handling import *
 from time import time
 
@@ -87,7 +87,7 @@ for website in web_list:
     for current_url in to_crawl :
         if checkUrl(current_url) == 0 :
             continue
-        error("Crawling [%s]" % current_url, 0)
+        log("Crawling [%s]" % current_url)
         try :
             req = urllib2.Request(current_url)
             req.add_header('User-agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11')
@@ -103,7 +103,7 @@ for website in web_list:
         source      = html_page.read()
         soup        = BeautifulSoup(source)
         content     = soup.prettify()
-        diff  = ''
+        diff        = ''
         if current_url in tracked_pages:
             # See if there is any difference in the page
             text1 = content.split('\n')

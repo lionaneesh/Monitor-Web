@@ -14,10 +14,11 @@ class bcolors:
         self.WARNING = ''
         self.FAIL = ''
         self.ENDC = ''
-#-- Error --
+
 def log(msg):
     print bcolors.OKGREEN + 'log: ' + msg + bcolors.ENDC
 
+#-- Error --
 def warning(msg):
     print bcolors.WARNING + 'Warning: ' + msg + bcolors.ENDC
 
@@ -32,10 +33,9 @@ def fatal(msg):
 # @param severity How severe the error is
 # @return void
 def error(msg, severity=1):
-    if severity > 3 or severity < 0:
+    if severity > 3 or severity < 1:
         severity = 3
     options = {
-                0 : log,
                 1 : warning,
                 2 : error,
                 3 : fatal

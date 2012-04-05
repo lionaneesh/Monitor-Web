@@ -1,5 +1,5 @@
 import os
-from errors import *
+from crawler_log import *
 
 default_config_list = ['http://google.com']
 
