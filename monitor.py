@@ -110,12 +110,10 @@ for website in web_list:
         diff  = ''
         if current_url in tracked_pages:
             # See if there is any difference in the page
-            len_diff = 0            
             text1 = content.split('\n')
             text1.pop() # remove last newline
             tp   = open(pages[current_url])
             text2 = tp.read().splitlines()
-            # remove newlines
             diff_generator = difflib.unified_diff(text1, text2)
             for differences in diff_generator:
                 diff += differences + '\n'
