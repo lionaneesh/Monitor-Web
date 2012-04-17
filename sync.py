@@ -101,7 +101,7 @@ for website in web_list:
         except KeyboardInterrupt :
             cleanup();
         source      = html_page.read()
-        soup        = BeautifulSoup(source)
+        soup        = BeautifulSoup(source, fromEncoding="utf-8")
         content     = soup.prettify()
         diff        = ''
         if current_url in tracked_pages:
